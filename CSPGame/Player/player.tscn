@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8bfpaktqyh0m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h630y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xdr6x"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.175, 1.175)
+shape = SubResource("CapsuleShape2D_h630y")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(25, 25)
+mesh = SubResource("CapsuleMesh_xdr6x")
