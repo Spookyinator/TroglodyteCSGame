@@ -10,9 +10,9 @@
 script = ExtResource("1_phvfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.175, 1.175)
+scale = Vector2(0.48, 0.48)
 shape = SubResource("CapsuleShape2D_h630y")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(25, 25)
+scale = Vector2(10, 10)
 mesh = SubResource("CapsuleMesh_xdr6x")

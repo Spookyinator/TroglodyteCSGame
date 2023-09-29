@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 75.0	
 
 func _physics_process(delta):
 	
@@ -16,4 +16,5 @@ func _physics_process(delta):
 		velocity.y = SPEED * directiony
 	else:
 		velocity.y = lerp(SPEED, 0.0, 1.0)
+	
 	move_and_slide()
