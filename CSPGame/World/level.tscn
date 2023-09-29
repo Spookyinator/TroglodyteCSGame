@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=5 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
+[ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="2_fxafm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbk03"]
+height = 46.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ybjsh"]
 
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dyldr")]
 position = Vector2(148, 81)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_fxafm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_xbk03")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+modulate = Color(0.0392157, 0.580392, 0.407843, 1)
+scale = Vector2(22.17, 22.17)
+mesh = SubResource("CapsuleMesh_ybjsh")
