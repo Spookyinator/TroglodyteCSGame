@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn3lg7uw81rhd"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_wpcep"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tw7ql"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5cr65"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_wpcep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 10)
+shape = SubResource("CapsuleShape2D_tw7ql")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(195.96, 149.259)
+mesh = SubResource("CapsuleMesh_5cr65")
