@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=2 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="2_fxafm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbk03"]
@@ -185,6 +186,8 @@ texture = ExtResource("2_14ksr")
 
 [sub_resource type="TileSet" id="TileSet_u5jyd"]
 sources/0 = SubResource("TileSetAtlasSource_f24y4")
+=======
+>>>>>>> parent of 50431f8 (enemy script that moves towards you)
 
 [node name="Level" type="Node2D"]
 
@@ -200,6 +203,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 9, 65536, 0, 10, 131072, 65536, 9, 1,
 
 [node name="Player" parent="." instance=ExtResource("1_dyldr")]
 position = Vector2(148, 81)
+<<<<<<< HEAD
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("2_fxafm")
@@ -213,3 +217,5 @@ scale = Vector2(22.17, 22.17)
 mesh = SubResource("CapsuleMesh_ybjsh")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+=======
+>>>>>>> parent of 50431f8 (enemy script that moves towards you)
