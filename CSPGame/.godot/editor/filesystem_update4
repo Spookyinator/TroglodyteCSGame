@@ -1,3 +1,6 @@
 res://World/level.tscn
 res://Enemies/enemyTest.tscn
 res://Enemies/enemyTest.gd
+res://Player/player.tscn
+res://World/level.tscn
+res://Player/player.gd

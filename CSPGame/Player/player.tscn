@@ -16,3 +16,8 @@ shape = SubResource("CapsuleShape2D_h630y")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(10, 10)
 mesh = SubResource("CapsuleMesh_xdr6x")
+
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
