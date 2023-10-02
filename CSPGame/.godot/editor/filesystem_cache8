@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1696275034
+icon.svg::CompressedTexture2D::515430682970715716::1696015681::1696273996::1::::<><>::
+::res://Assets/::1696273996
+Dungeon tileset.png::CompressedTexture2D::8830533693376422446::1696272884::1696273996::1::::<><>::
+::res://Player/::1696274903
+player.gd::GDScript::-1::1696274900::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::4705047289708286106::1696274903::0::1::::<><>::res://Player/player.gd
+::res://World/::1696274903
+level.tscn::PackedScene::323750621964538083::1696274903::0::1::::<><>::uid://b8bfpaktqyh0m::::res://Player/player.tscn<>uid://dx2tunlp8b0tm::::res://Assets/Dungeon tileset.png
