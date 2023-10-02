@@ -13,8 +13,11 @@ var sliding = false
 
 func _physics_process(delta):
 	var directionx = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	var directiony = Input.get_action_strength("Down") - Input.get_action_strength("Up")
-		
+	var directiony = Input.get_action_strength("Down") - Input.get_action_strength("Up") 
+	
+	if Input.is_action_just_pressed("slide"):
+		pass
+	
 	if shooting and sliding == false:
 		_state = STATE.MOVE
 	
