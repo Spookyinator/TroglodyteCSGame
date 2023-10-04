@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 75.0
-const slideSPEED = 175.0
+const SPEED = 65.0
+const slideSPEED = 130.0
 
 enum STATE {MOVE, SLIDE, SHOOT}
 

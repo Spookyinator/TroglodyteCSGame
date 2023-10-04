@@ -200,4 +200,3 @@ position = Vector2(148, 81)
 remote_path = NodePath("../../Camera2D")
 
 [node name="Zombie" parent="." instance=ExtResource("3_2q0tg")]
-modulate = Color(0, 0.396078, 0, 1)

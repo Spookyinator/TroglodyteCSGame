@@ -2,20 +2,22 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h630y"]
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xdr6x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h630y"]
+radius = 10.4167
+height = 41.6667
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_phvfc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.48, 0.48)
-shape = SubResource("CapsuleShape2D_h630y")
-
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(10, 10)
 mesh = SubResource("CapsuleMesh_xdr6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.48, 0.48)
+shape = SubResource("CapsuleShape2D_h630y")
 
 [node name="SlideTimer" type="Timer" parent="."]
 wait_time = 0.3
