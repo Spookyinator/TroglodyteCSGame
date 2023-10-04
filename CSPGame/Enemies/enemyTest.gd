@@ -1,18 +1,28 @@
 extends CharacterBody2D
 
 
-const SPEED = 25.0
+const SPEED = 40.0
+const ATKRANGE = 50.0
 var player = null
+var canMove = true
 func _ready():
 	player = get_node("/root/Level/Player")
-func _physics_process(delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	if player:
-		var targetPos = player.position
-		var distance = self.global_position.distance_to(player.global_position)
-		var movement_vector = position.move_toward(targetPos, SPEED)
-		velocity = movement_vector
-		move_and_slide()
-		if distance<50:
-			velocity = Vector2(0,0)
+func target(targetPos):
+	#velocity = Vector2.ZERO
+	velocity = position.direction_to(player.position) * SPEED
+	#var distance = position.distance_to(player.global_position)
+	#print("Velocity: "+str(movement_vector))
+	#print("dist from player:"+str(distance))
+	move_and_slide()
+func stop():
+	velocity = Vector2.ZERO
+	move_and_slide()
+
+func _physics_process(_delta):
+	var distance = position.distance_to(player.global_position)
+	if distance<ATKRANGE:
+		stop()
+	else:
+		distance = position.distance_to(player.global_position)
+		target(player.global_position)
+		
