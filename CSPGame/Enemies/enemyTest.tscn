@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" path="res://Enemies/enemyTest.gd" id="1_4vnej"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ti8o1"]
+[sub_resource type="SphereMesh" id="SphereMesh_j2pa0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jfce"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmd5o"]
 radius = 10.4167
-height = 41.6667
 
 [node name="Zombie" type="CharacterBody2D"]
 script = ExtResource("1_4vnej")
@@ -14,9 +13,9 @@ script = ExtResource("1_4vnej")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 scale = Vector2(10, 10)
-mesh = SubResource("CapsuleMesh_ti8o1")
+mesh = SubResource("SphereMesh_j2pa0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(0, 0.392157, 0.309804, 1)
 scale = Vector2(0.48, 0.48)
-shape = SubResource("CapsuleShape2D_4jfce")
+shape = SubResource("CircleShape2D_wmd5o")
