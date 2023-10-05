@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=7 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
+[ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
 
@@ -182,6 +183,8 @@ texture = ExtResource("2_14ksr")
 sources/0 = SubResource("TileSetAtlasSource_f24y4")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_xbnhj")
+test_zombie_scene = ExtResource("3_2q0tg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(148, 81)
@@ -200,3 +203,8 @@ position = Vector2(148, 81)
 remote_path = NodePath("../../Camera2D")
 
 [node name="Zombie" parent="." instance=ExtResource("3_2q0tg")]
+
+[node name="ZombieTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
