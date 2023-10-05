@@ -18,6 +18,7 @@ func target(targetPos):
 	#var distance = position.distance_to(player.global_position)
 	#print("Velocity: "+str(movement_vector))
 	#print("dist from player:"+str(distance))
+	look_at(targetPos)
 	move_and_slide()
 	
 func stop():

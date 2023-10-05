@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce6iml8dpgcct"]
+[gd_scene load_steps=6 format=3 uid="uid://ce6iml8dpgcct"]
 
 [ext_resource type="Script" path="res://Enemies/enemyTest.gd" id="1_4vnej"]
 
@@ -7,10 +7,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmd5o"]
 radius = 10.4167
 
+[sub_resource type="SphereMesh" id="SphereMesh_wy2t0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sw7tp"]
+
 [node name="Zombie" type="CharacterBody2D"]
 script = ExtResource("1_4vnej")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="Skin" type="MeshInstance2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 scale = Vector2(10, 10)
 mesh = SubResource("SphereMesh_j2pa0")
@@ -19,3 +23,21 @@ mesh = SubResource("SphereMesh_j2pa0")
 modulate = Color(0, 0.392157, 0.309804, 1)
 scale = Vector2(0.48, 0.48)
 shape = SubResource("CircleShape2D_wmd5o")
+
+[node name="Eye1" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2, 2)
+scale = Vector2(3.0034, 3)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Eye2" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2, -2)
+scale = Vector2(3.0034, 3)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Mouth" type="MeshInstance2D" parent="."]
+modulate = Color(0.741176, 0, 0, 1)
+position = Vector2(5, 0.500001)
+scale = Vector2(2.00227, 3)
+mesh = SubResource("SphereMesh_sw7tp")
