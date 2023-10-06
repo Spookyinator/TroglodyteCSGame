@@ -8,9 +8,12 @@ enum state {follow, attack}
 
 var player = null
 var canMove = true
-
+var gameOver = false
 func _ready():
-	player = get_node("/root/Level/Player")
+	if !gameOver:
+		player = get_node("/root/Level/Player")
+	else:
+		print("game over yeahhhhh")
 	
 func target(targetPos):
 	#velocity = Vector2.ZERO
@@ -27,14 +30,19 @@ func stop():
 
 func _physics_process(_delta):
 	var _state = state.follow
-	var distance = position.distance_to(player.global_position)
-	if distance<ATKRANGE:
-		stop()
-		_state = state.attack
+	if player != null:
+		var distance = position.distance_to(player.global_position)
+		if distance<ATKRANGE:
+			stop()
+			_state = state.attack
+		else:
+			distance = position.distance_to(player.global_position)
+			target(player.global_position)
+			_state = state.follow
 	else:
-		distance = position.distance_to(player.global_position)
-		target(player.global_position)
-		_state = state.follow
+		gameOver = true
+		#print("GAME OVER YEAHHHHH")
+		
 		
 func _on_hitbox_no_health():
 	queue_free()
