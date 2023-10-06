@@ -207,4 +207,15 @@ remote_path = NodePath("../../Camera2D")
 [node name="ZombieTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Spawn1" type="Marker2D" parent="."]
+
+[node name="Spawn2" type="Marker2D" parent="."]
+position = Vector2(338, 0)
+
+[node name="Spawn3" type="Marker2D" parent="."]
+position = Vector2(338, 190)
+
+[node name="Spawn4" type="Marker2D" parent="."]
+position = Vector2(0, 190)
+
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]

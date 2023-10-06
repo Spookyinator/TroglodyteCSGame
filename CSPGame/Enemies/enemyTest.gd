@@ -10,10 +10,8 @@ var player = null
 var canMove = true
 var gameOver = false
 func _ready():
-	if !gameOver:
-		player = get_node("/root/Level/Player")
-	else:
-		print("game over yeahhhhh")
+	player = get_node("/root/Level/Player")
+	
 	
 func target(targetPos):
 	#velocity = Vector2.ZERO
