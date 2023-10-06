@@ -44,7 +44,6 @@ func _physics_process(delta):
 		_state = STATE.SHOOT
 	
 	if _state == STATE.SHOOT:
-		print("yes")
 		if directionx:
 			velocity.x = shooting_speed * directionx
 		else:
@@ -65,8 +64,7 @@ func _physics_process(delta):
 			velocity.x = slideSPEED * directionx
 		if directiony:
 			velocity.y = slideSPEED * directiony
-			
-	
+		
 	look_at(get_global_mouse_position())
 	move_and_slide()
 
@@ -81,3 +79,6 @@ func shoot():
 func _on_slide_timer_timeout():
 	_state = STATE.MOVE
 	sliding = false
+
+func _on_hitbox_no_health():
+	queue_free()

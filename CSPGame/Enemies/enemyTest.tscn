@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce6iml8dpgcct"]
+[gd_scene load_steps=8 format=3 uid="uid://ce6iml8dpgcct"]
 
 [ext_resource type="Script" path="res://Enemies/enemyTest.gd" id="1_4vnej"]
+[ext_resource type="PackedScene" uid="uid://dsedh28upjm41" path="res://Hitboxes & Hurtboxes/hurtbox.tscn" id="2_jx01i"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2pa0"]
 
@@ -11,7 +12,11 @@ radius = 10.4167
 
 [sub_resource type="SphereMesh" id="SphereMesh_sw7tp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yesk8"]
+radius = 11.0
+
 [node name="Zombie" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_4vnej")
 
 [node name="Skin" type="MeshInstance2D" parent="."]
@@ -41,3 +46,12 @@ modulate = Color(0.741176, 0, 0, 1)
 position = Vector2(5, 0.500001)
 scale = Vector2(2.00227, 3)
 mesh = SubResource("SphereMesh_sw7tp")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_jx01i")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_yesk8")
+
+[editable path="Hurtbox"]

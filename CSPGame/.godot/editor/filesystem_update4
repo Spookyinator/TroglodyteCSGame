@@ -1,3 +1,9 @@
 res://Player/player.tscn
 res://World/level.tscn
 res://Player/player.gd
+res://Hitboxes & Hurtboxes/hitbox.gd
+res://Hitboxes & Hurtboxes/hitbox.tscn
+res://Enemies/enemyTest.tscn
+res://Hitboxes & Hurtboxes/hurtbox.tscn
+res://Hitboxes & Hurtboxes/hurtbox.gd
+res://Enemies/enemyTest.gd

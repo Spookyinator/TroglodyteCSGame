@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8bfpaktqyh0m"]
+[gd_scene load_steps=6 format=3 uid="uid://b8bfpaktqyh0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
+[ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="2_22xg2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kctsf"]
 
@@ -10,6 +11,7 @@ radius = 10.4167
 [sub_resource type="BoxMesh" id="BoxMesh_swony"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_phvfc")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -32,4 +34,9 @@ mesh = SubResource("BoxMesh_swony")
 [node name="Chamber" type="Marker2D" parent="."]
 position = Vector2(9, 0)
 
+[node name="Hitbox" parent="." instance=ExtResource("2_22xg2")]
+collision_layer = 0
+collision_mask = 4
+
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
+[connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
