@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 65.0
 const slideSPEED = 130.0
 const bullet_speed = 500.0
+const shooting_speed = 50.0
 
 enum STATE {MOVE, SLIDE, SHOOT}
 
@@ -20,10 +21,6 @@ func _physics_process(delta):
 	var directionx = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	var directiony = Input.get_action_strength("Down") - Input.get_action_strength("Up") 
 	
-	if Input.is_action_just_pressed("slide"):
-		_state = STATE.SLIDE
-		$SlideTimer.start()
-	
 	if shooting and sliding == false:
 		_state = STATE.MOVE
 	
@@ -37,12 +34,38 @@ func _physics_process(delta):
 		else:
 			velocity.y = lerp(SPEED, 0.0, 1.0)
 	
+	if Input.is_action_pressed("shoot") and sliding == false:
+		shooting = true
+		shoot()
+	else:
+		shooting = false
+	
+	if shooting == true:
+		_state = STATE.SHOOT
+	
+	if _state == STATE.SHOOT:
+		print("yes")
+		if directionx:
+			velocity.x = shooting_speed * directionx
+		else:
+			velocity.x = lerp(shooting_speed, 0.0, 1.0)
+		if directiony:
+			velocity.y = shooting_speed * directiony
+		else:
+			velocity.y = lerp(shooting_speed, 0.0, 1.0)
+	
+	if Input.is_action_just_pressed("slide"):
+		_state = STATE.SLIDE
+		$SlideTimer.start()
+		set_process_unhandled_input(false)
+	
 	if _state == STATE.SLIDE:
+		sliding = true
 		if directionx:
 			velocity.x = slideSPEED * directionx
+		if directiony:
+			velocity.y = slideSPEED * directiony
 			
-	if Input.is_action_pressed("shoot"):
-		shoot()
 	
 	look_at(get_global_mouse_position())
 	move_and_slide()
@@ -57,3 +80,4 @@ func shoot():
 
 func _on_slide_timer_timeout():
 	_state = STATE.MOVE
+	sliding = false

@@ -1,6 +1,3 @@
 res://Player/player.tscn
-res://Enemies/enemyTest.tscn
 res://World/level.tscn
 res://Player/player.gd
-res://Weapons/bullet.tscn
-res://Weapons/bullet.gd
