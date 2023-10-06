@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfkmanuon7hom"]
+[gd_scene load_steps=6 format=3 uid="uid://cfkmanuon7hom"]
+
+[ext_resource type="PackedScene" uid="uid://dsedh28upjm41" path="res://Hitboxes & Hurtboxes/hurtbox.tscn" id="1_irj5k"]
 
 [sub_resource type="GDScript" id="GDScript_njtxy"]
 script/source = "extends RigidBody2D
-
-
 
 func _on_timer_timeout():
 	queue_free()
@@ -13,7 +13,11 @@ func _on_timer_timeout():
 
 [sub_resource type="BoxMesh" id="BoxMesh_uwx37"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i45qv"]
+size = Vector2(2, 1)
+
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 0
 gravity_scale = 0.0
 script = SubResource("GDScript_njtxy")
 
@@ -29,4 +33,14 @@ mesh = SubResource("BoxMesh_uwx37")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Hurtbox" parent="." instance=ExtResource("1_irj5k")]
+collision_layer = 2
+collision_mask = 0
+damage = 5
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_i45qv")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Hurtbox"]

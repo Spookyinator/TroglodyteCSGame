@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce6iml8dpgcct"]
+[gd_scene load_steps=9 format=3 uid="uid://ce6iml8dpgcct"]
 
 [ext_resource type="Script" path="res://Enemies/enemyTest.gd" id="1_4vnej"]
 [ext_resource type="PackedScene" uid="uid://dsedh28upjm41" path="res://Hitboxes & Hurtboxes/hurtbox.tscn" id="2_jx01i"]
+[ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="3_idumi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2pa0"]
 
@@ -54,4 +55,12 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_yesk8")
 
+[node name="Hitbox" parent="." instance=ExtResource("3_idumi")]
+collision_layer = 0
+collision_mask = 2
+health = 15
+
+[connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
+
 [editable path="Hurtbox"]
+[editable path="Hitbox"]

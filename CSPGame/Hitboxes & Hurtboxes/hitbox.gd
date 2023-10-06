@@ -9,4 +9,5 @@ func _physics_process(delta):
 		emit_signal("noHealth")
 
 func _on_area_entered(area):
+	print("yes")
 	health -= area.damage

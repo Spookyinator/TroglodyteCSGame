@@ -36,3 +36,5 @@ func _physics_process(_delta):
 		target(player.global_position)
 		_state = state.follow
 		
+func _on_hitbox_no_health():
+	queue_free()
