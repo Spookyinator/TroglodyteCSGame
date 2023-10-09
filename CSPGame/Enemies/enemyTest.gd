@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 40.0
 const ATKRANGE = 15.0
 
@@ -11,8 +10,9 @@ var canMove = true
 var gameOver = false
 func _ready():
 	player = get_node("/root/Level/Player")
-	
-	
+	#player.playerDead.connect(_handlePlayerDead())
+func _handlePlayerDead():
+	gameOver = true
 func target(targetPos):
 	#velocity = Vector2.ZERO
 	velocity = position.direction_to(player.position) * SPEED
@@ -28,7 +28,7 @@ func stop():
 
 func _physics_process(_delta):
 	var _state = state.follow
-	if player != null:
+	if not gameOver:
 		var distance = position.distance_to(player.global_position)
 		if distance<ATKRANGE:
 			stop()
@@ -38,9 +38,9 @@ func _physics_process(_delta):
 			target(player.global_position)
 			_state = state.follow
 	else:
-		gameOver = true
-		#print("GAME OVER YEAHHHHH")
+		print("GAME OVER YEAHHHHH")
 		
 		
 func _on_hitbox_no_health():
 	queue_free()
+	
