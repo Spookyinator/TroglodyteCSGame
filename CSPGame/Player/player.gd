@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal playerDead
 
 const SPEED = 65.0
 const slideSPEED = 130.0
@@ -81,4 +81,5 @@ func _on_slide_timer_timeout():
 	sliding = false
 
 func _on_hitbox_no_health():
+	playerDead.emit()
 	queue_free()
