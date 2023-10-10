@@ -216,4 +216,5 @@ position = Vector2(338, 190)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(0, 190)
 
+[connection signal="playerDead" from="Player" to="Zombie" method="_on_player_player_dead"]
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]

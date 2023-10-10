@@ -8,11 +8,14 @@ enum state {follow, attack}
 @onready var skin = $Skin
 
 var player = null
-var canMove = true
+#var canMove = true
 var gameOver = false
 func _ready():
-	player = get_node("/root/Level/Player")
-	#player.playerDead.connect(_handlePlayerDead())
+	if not gameOver:
+		player = get_node("/root/Level/Player")
+	else:
+		queue_free()
+		print("GAME OVER YEAHHHHH")
 func _handlePlayerDead():
 	gameOver = true
 func target(targetPos):
@@ -41,6 +44,9 @@ func _physics_process(_delta):
 			_state = state.follow
 	else:
 		print("GAME OVER YEAHHHHH")
+		queue_free()
+		
+		
 	update_health()
 
 func update_health():
@@ -57,3 +63,8 @@ func update_health():
 func _on_hitbox_no_health():
 	queue_free()
 	
+
+
+func _on_player_player_dead():
+	gameOver = true
+	queue_free()
