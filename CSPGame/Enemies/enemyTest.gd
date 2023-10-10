@@ -5,6 +5,8 @@ const ATKRANGE = 15.0
 
 enum state {follow, attack}
 
+@onready var skin = $Skin
+
 var player = null
 #var canMove = true
 var gameOver = false
@@ -22,7 +24,7 @@ func target(targetPos):
 	#var distance = position.distance_to(player.global_position)
 	#print("Velocity: "+str(movement_vector))
 	#print("dist from player:"+str(distance))
-	look_at(targetPos)
+	skin.look_at(targetPos)
 	move_and_slide()
 	
 func stop():
@@ -45,6 +47,19 @@ func _physics_process(_delta):
 		queue_free()
 		
 		
+	update_health()
+
+func update_health():
+	var hitbox = $Hitbox
+	var health = hitbox.health
+	var health_bar = $HealthBar
+	health_bar.value = health * 6.66666667
+	
+	if health >= 100:
+		health_bar.visible = false
+	else:
+		health_bar.visible = true
+
 func _on_hitbox_no_health():
 	queue_free()
 	

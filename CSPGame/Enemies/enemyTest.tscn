@@ -6,18 +6,18 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2pa0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wmd5o"]
-radius = 10.4167
-
 [sub_resource type="SphereMesh" id="SphereMesh_wy2t0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_sw7tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmd5o"]
+radius = 10.4167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yesk8"]
 radius = 11.0
 
 [node name="Zombie" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 4
 script = ExtResource("1_4vnej")
 
 [node name="Skin" type="MeshInstance2D" parent="."]
@@ -25,28 +25,28 @@ modulate = Color(0, 1, 0, 1)
 scale = Vector2(10, 10)
 mesh = SubResource("SphereMesh_j2pa0")
 
+[node name="Eye1" type="MeshInstance2D" parent="Skin"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.2, 0.2)
+scale = Vector2(0.30034, 0.3)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Eye2" type="MeshInstance2D" parent="Skin"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.2, -0.2)
+scale = Vector2(0.30034, 0.3)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Mouth" type="MeshInstance2D" parent="Skin"]
+modulate = Color(0.741176, 0, 0, 1)
+position = Vector2(0.5, 0.0500001)
+scale = Vector2(0.200227, 0.3)
+mesh = SubResource("SphereMesh_sw7tp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(0, 0.392157, 0.309804, 1)
 scale = Vector2(0.48, 0.48)
 shape = SubResource("CircleShape2D_wmd5o")
-
-[node name="Eye1" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(2, 2)
-scale = Vector2(3.0034, 3)
-mesh = SubResource("SphereMesh_wy2t0")
-
-[node name="Eye2" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(2, -2)
-scale = Vector2(3.0034, 3)
-mesh = SubResource("SphereMesh_wy2t0")
-
-[node name="Mouth" type="MeshInstance2D" parent="."]
-modulate = Color(0.741176, 0, 0, 1)
-position = Vector2(5, 0.500001)
-scale = Vector2(2.00227, 3)
-mesh = SubResource("SphereMesh_sw7tp")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_jx01i")]
 collision_layer = 4
@@ -59,6 +59,15 @@ shape = SubResource("CircleShape2D_yesk8")
 collision_layer = 0
 collision_mask = 2
 health = 15
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 160.0
+offset_bottom = 17.0
+scale = Vector2(0.095, 0.095)
+show_percentage = false
 
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 
