@@ -33,7 +33,7 @@ func _physics_process(delta):
 			velocity.y = lerp(SPEED, 0.0, 1)
 			velocity.x = lerp(SPEED, 0.0, 1)
 			
-	if Input.is_action_pressed("shoot") and sliding == false:
+	if Input.is_action_just_pressed("shoot") and sliding == false:
 		shooting = true
 		shoot()
 	else:
