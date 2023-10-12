@@ -52,13 +52,13 @@ func _physics_process(_delta):
 func update_health():
 	var hitbox = $Hitbox
 	var health = hitbox.health
+	var max_health = hitbox.max_health
 	var health_bar = $HealthBar
-	health_bar.value = health * 6.66666667
-	
-	if health >= 100:
-		health_bar.visible = false
-	else:
-		health_bar.visible = true
+	var health_percent = health/max_health
+	if health >= 1:
+		health_bar.value = health_percent * 100
+	if health <= 0:
+		health_bar.value = 0
 
 func _on_hitbox_no_health():
 	queue_free()
