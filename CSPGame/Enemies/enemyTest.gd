@@ -34,14 +34,15 @@ func stop():
 func _physics_process(_delta):
 	var _state = state.follow
 	if not gameOver:
-		var distance = position.distance_to(player.global_position)
-		if distance<ATKRANGE:
-			stop()
-			_state = state.attack
-		else:
-			distance = position.distance_to(player.global_position)
-			target(player.global_position)
-			_state = state.follow
+		if (not player == null):
+			var distance = position.distance_to(player.global_position)
+			if distance<ATKRANGE:
+				stop()
+				_state = state.attack
+			else:
+				distance = position.distance_to(player.global_position)
+				target(player.global_position)
+				_state = state.follow
 	else:
 		print("GAME OVER YEAHHHHH")
 		queue_free()
