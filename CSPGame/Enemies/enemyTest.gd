@@ -68,4 +68,3 @@ func _on_hitbox_no_health():
 
 func _on_player_player_dead():
 	gameOver = true
-	queue_free()

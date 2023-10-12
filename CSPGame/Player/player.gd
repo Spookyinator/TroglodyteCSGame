@@ -15,6 +15,7 @@ var sliding = false
 
 var bullet  = preload("res://Weapons/bullet.tscn")
 
+
 @onready var chamber = $Chamber
 
 func _physics_process(delta):
@@ -82,3 +83,7 @@ func _on_slide_timer_timeout():
 func _on_hitbox_no_health():
 	playerDead.emit()
 	queue_free()
+func _on_player_dead():
+	pass
+
+	
