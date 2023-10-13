@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	position = get_node("/root/Level/Camera2D").get_target_position() - Vector2(50,50)# Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_button_2_pressed():
-	get_tree().change_scene_to_file("res://menu.tscn")
+	get_tree().change_scene_to_file("res://Screens/menu.tscn")
 
 
 func _on_button_pressed():

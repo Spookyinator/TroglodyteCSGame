@@ -1,7 +1,7 @@
 extends Node2D
 @export var test_zombie_scene: PackedScene
 var isPlayerDead = false
-var gameOver = preload("res://gameOver.tscn")
+var gameOver = preload("res://Screens/gameOver.tscn")
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead):
 		var spawnArray = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
