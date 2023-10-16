@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 40.0
 const ATKRANGE = 15.0
-
+const KILLPOINTS = 100
+const HITPOINTS = 10
 enum state {follow, attack}
 
 @onready var skin = $Skin
@@ -10,6 +11,8 @@ enum state {follow, attack}
 var player = null
 #var canMove = true
 var gameOver = false
+
+signal isKilled
 func _ready():
 	if not gameOver:
 		player = get_node("/root/Level/Player")
@@ -62,9 +65,14 @@ func update_health():
 		health_bar.value = 0
 
 func _on_hitbox_no_health():
+	isKilled.emit(KILLPOINTS)
 	queue_free()
 	
 
 
 func _on_player_player_dead():
 	gameOver = true
+
+
+func _on_zombie_hit(area):
+	isKilled.emit(HITPOINTS) # Replace with function body.

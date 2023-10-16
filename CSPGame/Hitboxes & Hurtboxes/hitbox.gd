@@ -4,7 +4,6 @@ extends Area2D
 @export var health = 3.0
 
 signal noHealth
-
 func _physics_process(delta):
 	if health <= 0:
 		emit_signal("noHealth")

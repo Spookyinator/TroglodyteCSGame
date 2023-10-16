@@ -70,6 +70,7 @@ offset_bottom = 17.0
 scale = Vector2(0.095, 0.095)
 show_percentage = false
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_zombie_hit"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 
 [editable path="Hurtbox"]
