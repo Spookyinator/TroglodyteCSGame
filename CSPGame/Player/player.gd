@@ -2,7 +2,7 @@ extends CharacterBody2D
 signal playerDead
 
 const SPEED = 65.0
-const slideSPEED = 130.0
+const slideSPEED = 90.0
 const bullet_speed = 500.0
 const shooting_speed = 50.0
 
@@ -13,12 +13,26 @@ var _state : int = STATE.MOVE
 var shooting = false
 var sliding = false
 
+var stamina = 100.0
+var stamina_regening = false
+
 var bullet  = preload("res://Weapons/bullet.tscn")
 
 
 @onready var chamber = $Chamber
+@onready var stamina_bar = $StaminaBar
+@onready var stamina_reg = $StaminReg
 
 func _physics_process(delta):
+	stamina_bar.value = stamina
+	if stamina >= 100:
+		stamina_bar.visible = false
+	if stamina <= 99:
+		stamina_bar.visible = true
+	
+	if stamina_regening == true:
+		stamina += 5
+	
 	var direction = Vector2.ZERO
 	direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
@@ -53,17 +67,26 @@ func _physics_process(delta):
 		else:
 			velocity.y = lerp(shooting_speed, 0.0, 1.0)
 	
-	if Input.is_action_just_pressed("slide"):
+	if Input.is_action_pressed("slide") and stamina >= 1:
+		stamina_regening = false
 		_state = STATE.SLIDE
-		$SlideTimer.start()
 		set_process_unhandled_input(false)
+	else:
+		sliding = false
+		_state = STATE.MOVE
 	
 	if _state == STATE.SLIDE:
+		stamina -= 1
 		sliding = true
+
 		if direction.x:
 			velocity.x = slideSPEED * direction.x
 		if direction.y:
 			velocity.y = slideSPEED * direction.y
+		
+	if stamina <= 99 and sliding == false:
+		_state = STATE.MOVE
+		stamina_reg.start()
 		
 	look_at(get_global_mouse_position())
 	move_and_slide()
@@ -76,14 +99,13 @@ func shoot():
 	get_tree().get_root().add_child(bullet_instance)
 	bullet_instance.get_node("Timer").start()
 
-func _on_slide_timer_timeout():
-	_state = STATE.MOVE
-	sliding = false
-
 func _on_hitbox_no_health():
 	playerDead.emit()
 	queue_free()
 func _on_player_dead():
 	pass
-
+	
+func _on_stamin_reg_timeout():
+	stamina_regening = true
+	print("balls")
 	

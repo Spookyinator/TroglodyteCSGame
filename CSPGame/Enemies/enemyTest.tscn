@@ -68,6 +68,7 @@ offset_top = -10.0
 offset_right = 160.0
 offset_bottom = 17.0
 scale = Vector2(0.095, 0.095)
+value = 33.7
 show_percentage = false
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_zombie_hit"]
