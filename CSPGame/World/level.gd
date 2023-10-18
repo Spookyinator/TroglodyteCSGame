@@ -15,3 +15,10 @@ func _on_zombie_timer_timeout():
 func _on_zombie_killed(pointsScored):
 	points += pointsScored
 	print(points)
+func _on_player_player_dead():
+	var gameMusic = get_node("GameMusic")
+	if gameMusic.is_playing():
+		gameMusic.stop()
+	isPlayerDead = true
+	var game_over = gameOver.instantiate()
+	add_child(game_over)# Replace with function body.
