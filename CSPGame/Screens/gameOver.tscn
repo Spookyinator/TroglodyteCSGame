@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cicgl8ihxl6sn"]
+
+[ext_resource type="Script" path="res://Screens/gameOver.gd" id="1_7roh4"]
+
+[node name="gameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7roh4")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 71.0
+offset_bottom = 35.0
+text = "Restart"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 42.0
+offset_right = 136.0
+offset_bottom = 73.0
+text = "Return to Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

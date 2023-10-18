@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8bfpaktqyh0m"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
+[ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="2_22xg2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kctsf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2t4xt"]
+radius = 10.4167
+
+[sub_resource type="BoxMesh" id="BoxMesh_swony"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_phvfc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(10, 10)
+mesh = SubResource("SphereMesh_kctsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.48, 0.48)
+shape = SubResource("CircleShape2D_2t4xt")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Pivot"]
+modulate = Color(0.396078, 0.396078, 0.396078, 1)
+position = Vector2(6, 0)
+scale = Vector2(4.5, 1.5)
+mesh = SubResource("BoxMesh_swony")
+
+[node name="Chamber" type="Marker2D" parent="Pivot"]
+position = Vector2(9, 0)
+
+[node name="Hitbox" parent="." instance=ExtResource("2_22xg2")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="StaminReg" type="Timer" parent="."]
+process_callback = 0
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(0, 0, 1, 1)
+offset_left = -8.0
+offset_top = 6.0
+offset_right = 160.0
+offset_bottom = 33.0
+scale = Vector2(0.095, 0.095)
+show_percentage = false
+
+[connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
+[connection signal="timeout" from="StaminReg" to="." method="_on_stamin_reg_timeout"]
