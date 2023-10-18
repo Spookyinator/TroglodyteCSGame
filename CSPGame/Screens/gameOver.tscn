@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cicgl8ihxl6sn"]
+[gd_scene load_steps=2 format=3 uid="uid://cicgl8ihxl6sn"]
 
 [ext_resource type="Script" path="res://Screens/gameOver.gd" id="1_7roh4"]
-[ext_resource type="Texture2D" uid="uid://brcktub6qmj6x" path="res://Assets/2rightarrow.png" id="2_br22s"]
 
 [node name="gameOver" type="Control"]
 layout_mode = 3
@@ -27,7 +26,6 @@ offset_top = 42.0
 offset_right = 136.0
 offset_bottom = 73.0
 text = "Return to Menu"
-icon = ExtResource("2_br22s")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

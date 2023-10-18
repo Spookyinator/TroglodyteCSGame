@@ -74,5 +74,6 @@ func _on_player_player_dead():
 	gameOver = true
 
 
+@warning_ignore("unused_parameter")
 func _on_zombie_hit(area):
 	isKilled.emit(HITPOINTS) # Replace with function body.
