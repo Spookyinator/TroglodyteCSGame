@@ -15,11 +15,13 @@ var sliding = false
 
 var stamina = 100.0
 var stamina_regening = false
+var stamina_timer = false
 
 var bullet  = preload("res://Weapons/bullet.tscn")
+var game_over = preload("res://Screens/gameOver.tscn")
 
-
-@onready var chamber = $Chamber
+@onready var pivot = $Pivot
+@onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
 @onready var stamina_reg = $StaminReg
 
@@ -27,11 +29,12 @@ func _physics_process(delta):
 	stamina_bar.value = stamina
 	if stamina >= 100:
 		stamina_bar.visible = false
+		stamina_regening = false
 	if stamina <= 99:
 		stamina_bar.visible = true
 	
 	if stamina_regening == true:
-		stamina += 5
+		stamina += 0.5
 	
 	var direction = Vector2.ZERO
 	direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -84,28 +87,34 @@ func _physics_process(delta):
 		if direction.y:
 			velocity.y = slideSPEED * direction.y
 		
-	if stamina <= 99 and sliding == false:
+	if stamina <= 99 and sliding == false and stamina_timer == false:
 		_state = STATE.MOVE
 		stamina_reg.start()
+		stamina_timer = true
 		
-	look_at(get_global_mouse_position())
+	pivot.look_at(get_global_mouse_position())
 	move_and_slide()
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = chamber.global_position
-	bullet_instance.rotation = global_rotation
+	bullet_instance.rotation = pivot.global_rotation
 	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(bullet_instance.rotation),Vector2())
 	get_tree().get_root().add_child(bullet_instance)
 	bullet_instance.get_node("Timer").start()
 
 func _on_hitbox_no_health():
+	_game_over()
 	playerDead.emit()
 	queue_free()
-func _on_player_dead():
-	pass
 	
 func _on_stamin_reg_timeout():
 	stamina_regening = true
 	print("balls")
+	
+func _game_over():
+	var game_over_instance = game_over.instantiate()
+	game_over_instance.position.x = global_position.x - 160
+	game_over_instance.position.y = global_position.y - 90
+	get_tree().get_root().add_child(game_over_instance)
 	

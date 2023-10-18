@@ -22,18 +22,23 @@ mesh = SubResource("SphereMesh_kctsf")
 scale = Vector2(0.48, 0.48)
 shape = SubResource("CircleShape2D_2t4xt")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Pivot"]
 modulate = Color(0.396078, 0.396078, 0.396078, 1)
 position = Vector2(6, 0)
 scale = Vector2(4.5, 1.5)
 mesh = SubResource("BoxMesh_swony")
 
-[node name="Chamber" type="Marker2D" parent="."]
+[node name="Chamber" type="Marker2D" parent="Pivot"]
 position = Vector2(9, 0)
 
 [node name="Hitbox" parent="." instance=ExtResource("2_22xg2")]
 collision_layer = 0
 collision_mask = 4
+
+[node name="StaminReg" type="Timer" parent="."]
+process_callback = 0
 
 [node name="StaminaBar" type="ProgressBar" parent="."]
 visible = false
@@ -44,11 +49,6 @@ offset_right = 160.0
 offset_bottom = 33.0
 scale = Vector2(0.095, 0.095)
 show_percentage = false
-
-[node name="StaminReg" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.5
-one_shot = true
 
 [connection signal="playerDead" from="." to="." method="_on_player_dead"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
