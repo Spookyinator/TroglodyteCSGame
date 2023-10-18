@@ -221,5 +221,11 @@ position = Vector2(0, 190)
 stream = ExtResource("5_fhe7i")
 autoplay = true
 
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 3.0
+offset_right = 43.0
+offset_bottom = 26.0
+text = "text"
+
 [connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
