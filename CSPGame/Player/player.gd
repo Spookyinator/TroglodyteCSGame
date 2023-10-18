@@ -1,5 +1,4 @@
 extends CharacterBody2D
-signal playerDead
 
 const SPEED = 65.0
 const slideSPEED = 90.0
@@ -105,7 +104,6 @@ func shoot():
 
 func _on_hitbox_no_health():
 	_game_over()
-	playerDead.emit()
 	queue_free()
 	
 func _on_stamin_reg_timeout():

@@ -50,6 +50,5 @@ offset_bottom = 33.0
 scale = Vector2(0.095, 0.095)
 show_percentage = false
 
-[connection signal="playerDead" from="." to="." method="_on_player_dead"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 [connection signal="timeout" from="StaminReg" to="." method="_on_stamin_reg_timeout"]

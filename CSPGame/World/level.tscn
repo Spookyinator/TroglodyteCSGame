@@ -206,10 +206,19 @@ position = Vector2(338, 190)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(0, 190)
 
+[node name="Player" parent="." instance=ExtResource("1_dyldr")]
+position = Vector2(163, 95)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fhe7i")
 autoplay = true
 
-[connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(163, 95)
+process_callback = 0
+position_smoothing_enabled = true
+
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
-[connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
