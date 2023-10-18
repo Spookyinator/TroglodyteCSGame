@@ -3,6 +3,11 @@ extends Node2D
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var points = 0
+var scoreLabel: Label
+
+func _ready():
+	scoreLabel = $ScoreLabel
+	update_score_label()
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead):
 		var spawnArray = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
@@ -14,7 +19,10 @@ func _on_zombie_timer_timeout():
 
 func _on_zombie_killed(pointsScored):
 	points += pointsScored
-	print(points)
+	update_score_label()
+	
+func update_score_label():
+	scoreLabel.text = "Score: %d" % points
 func _on_player_player_dead():
 	var gameMusic = get_node("GameMusic")
 	if gameMusic.is_playing():
