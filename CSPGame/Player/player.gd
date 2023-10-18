@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal player_dead
 const SPEED = 65.0
 const slideSPEED = 90.0
 const bullet_speed = 500.0
@@ -103,6 +103,7 @@ func shoot():
 	bullet_instance.get_node("Timer").start()
 
 func _on_hitbox_no_health():
+	player_dead.emit()
 	_game_over()
 	queue_free()
 	
