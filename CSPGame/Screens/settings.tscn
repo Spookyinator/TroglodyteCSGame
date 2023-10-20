@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dewf8oc3s51pq"]
+
+[ext_resource type="Script" path="res://Screens/settings.gd" id="1_pvyg6"]
+[ext_resource type="Texture2D" uid="uid://c02ii8vma5f7e" path="res://Assets/menuscreen.png" id="1_rlehp"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0le7p"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_eeba5"]
+events = [SubResource("InputEventKey_0le7p")]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pvyg6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
+theme_override_colors/font_unselected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/side_margin = 0
+theme_override_font_sizes/font_size = 11
+tab_alignment = 1
+clip_tabs = false
+
+[node name="General" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/General"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Controls"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Menuscreen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0862745)
+z_index = -1
+position = Vector2(160, 92)
+scale = Vector2(0.256735, 0.263869)
+texture = ExtResource("1_rlehp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+offset_right = 34.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 11
+shortcut = SubResource("Shortcut_eeba5")
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
