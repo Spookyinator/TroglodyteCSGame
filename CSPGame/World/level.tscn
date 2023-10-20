@@ -221,5 +221,9 @@ position = Vector2(163, 95)
 process_callback = 0
 position_smoothing_enabled = true
 
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
 [connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
