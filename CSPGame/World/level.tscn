@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
-[ext_resource type="AudioStream" uid="uid://reyxrt8mwouw" path="res://MusicFiles/DoomRip1.mp3" id="5_fhe7i"]
+[ext_resource type="AudioStream" uid="uid://bep8crgabfj4x" path="res://MusicFiles/meathook.mp3" id="5_5ve35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f24y4"]
 texture = ExtResource("2_14ksr")
@@ -213,7 +213,7 @@ position = Vector2(163, 95)
 remote_path = NodePath("../../Camera2D")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_fhe7i")
+stream = ExtResource("5_5ve35")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
