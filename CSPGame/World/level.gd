@@ -6,7 +6,7 @@ var points = 0
 var scoreLabel: Label
 
 func _ready():
-	scoreLabel = $ScoreLabel
+	scoreLabel = get_node("CanvasLayer/ScoreLabel")
 	update_score_label()
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead):
@@ -21,7 +21,6 @@ func _on_zombie_killed(pointsScored):
 	points += pointsScored
 	print(points)
 	update_score_label()
-	
 func update_score_label():
 	scoreLabel.text = "Score: %d" % points
 func _on_player_player_dead():
