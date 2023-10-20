@@ -222,3 +222,4 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
+[connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
