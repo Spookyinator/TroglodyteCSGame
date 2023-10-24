@@ -104,16 +104,9 @@ func shoot():
 
 func _on_hitbox_no_health():
 	player_dead.emit()
-	_game_over()
 	queue_free()
 	
 func _on_stamin_reg_timeout():
 	stamina_regening = true
 	print("balls")
-	
-func _game_over():
-	var game_over_instance = game_over.instantiate()
-	game_over_instance.position.x = global_position.x - 160
-	game_over_instance.position.y = global_position.y - 90
-	get_tree().get_root().add_child(game_over_instance)
 	

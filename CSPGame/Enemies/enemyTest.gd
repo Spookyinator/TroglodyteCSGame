@@ -7,6 +7,7 @@ const HITPOINTS = 10
 enum state {follow, attack}
 
 @onready var skin = $Skin
+@onready var playerDetection = $PlayerDetection
 
 var player = null
 
@@ -14,13 +15,8 @@ var gameOver = false
 
 signal isKilled
 
-func _on_player_detection_body_entered(body):
-	player = body
-	
-func _on_player_detection_body_exited(body):
-	player = null
-
 func _physics_process(_delta):
+	player = playerDetection.player
 	if player != null:
 		var distance = position.distance_to(player.global_position)
 		if distance<ATKRANGE:

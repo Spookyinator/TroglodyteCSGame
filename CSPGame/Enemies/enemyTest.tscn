@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce6iml8dpgcct"]
+[gd_scene load_steps=11 format=3 uid="uid://ce6iml8dpgcct"]
 
 [ext_resource type="Script" path="res://Enemies/enemyTest.gd" id="1_4vnej"]
 [ext_resource type="PackedScene" uid="uid://dsedh28upjm41" path="res://Hitboxes & Hurtboxes/hurtbox.tscn" id="2_jx01i"]
@@ -16,6 +16,9 @@ radius = 10.4167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yesk8"]
 radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nnt00"]
+radius = 1139.67
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 4
@@ -74,6 +77,9 @@ show_percentage = false
 
 [node name="PlayerDetection" parent="." instance=ExtResource("4_wi2e4")]
 
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+shape = SubResource("CircleShape2D_nnt00")
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_zombie_hit"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
@@ -81,3 +87,4 @@ show_percentage = false
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
+[editable path="PlayerDetection"]
