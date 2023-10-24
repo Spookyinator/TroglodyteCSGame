@@ -29,4 +29,4 @@ func _on_player_player_dead():
 		gameMusic.stop()
 	isPlayerDead = true
 	var game_over = gameOver.instantiate()
-	#add_child(game_over)# Replace with function body.
+

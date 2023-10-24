@@ -14,10 +14,10 @@ var gameOver = false
 
 signal isKilled
 
-func _on_detection_body_entered(body):
+func _on_player_detection_body_entered(body):
 	player = body
 	
-func _on_detection_body_exited(body):
+func _on_player_detection_body_exited(body):
 	player = null
 
 func _physics_process(_delta):
@@ -58,3 +58,7 @@ func target(targetPos):
 func stop():
 	velocity = Vector2.ZERO
 	move_and_slide()
+
+
+
+
