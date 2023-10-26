@@ -1,5 +1,6 @@
 extends Node2D
 @export var test_zombie_scene: PackedScene
+@export var power_up_scene: PackedScene
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var points = 0
@@ -20,10 +21,16 @@ func _on_zombie_timer_timeout():
 		zombie.isKilled.connect(_on_zombie_killed)
 		add_child(zombie)
 
-func _on_zombie_killed(pointsScored):
+func _on_zombie_killed(pointsScored, x, y):
 	points += pointsScored
 	print(points)
 	update_score_label()
+	if randf() < 0.05:
+		spawn_power_up(x, y)
+func spawn_power_up(x, y):
+	var powerup = power_up_scene.instantiate()
+	powerup.global_position = Vector2(x, y)
+	add_child(powerup);
 func update_score_label():
 	scoreLabel.text = "Score: %d" % points
 func _on_player_player_dead():
