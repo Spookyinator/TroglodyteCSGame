@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dio7y2hia215d"]
+
+[ext_resource type="Texture2D" uid="uid://c362lcd20mjjh" path="res://Assets/RedSquare.png" id="1_musc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb8g7"]
+size = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vb8g7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_musc0")
