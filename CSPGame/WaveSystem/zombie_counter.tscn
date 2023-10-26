@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dev3g4a0i2m0s"]
 
-[ext_resource type="Script" path="res://ZombieCounter.gd" id="1_lfykh"]
+[ext_resource type="Script" path="res://WaveSystem/ZombieCounter.gd" id="1_cwyd0"]
 
 [node name="ZombieCounter" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("1_lfykh")
+script = ExtResource("1_cwyd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
