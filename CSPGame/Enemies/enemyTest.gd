@@ -38,7 +38,7 @@ func update_health():
 		health_bar.value = 0
 
 func _on_hitbox_no_health():
-	isKilled.emit(KILLPOINTS)
+	isKilled.emit(KILLPOINTS, position.x, position.y)
 	queue_free()
 
 @warning_ignore("unused_parameter")

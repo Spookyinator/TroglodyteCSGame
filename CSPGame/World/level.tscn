@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
+[ext_resource type="PackedScene" uid="uid://dio7y2hia215d" path="res://Powerups/test_powerup.tscn" id="3_cflf3"]
 [ext_resource type="AudioStream" uid="uid://bep8crgabfj4x" path="res://MusicFiles/meathook.mp3" id="5_5ve35"]
 [ext_resource type="PackedScene" uid="uid://dev3g4a0i2m0s" path="res://WaveSystem/zombie_counter.tscn" id="6_4g4tb"]
 
@@ -190,6 +191,7 @@ size = Vector2(322, 196)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xbnhj")
 test_zombie_scene = ExtResource("3_2q0tg")
+power_up_scene = ExtResource("3_cflf3")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_u5jyd")
