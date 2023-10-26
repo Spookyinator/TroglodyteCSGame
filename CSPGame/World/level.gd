@@ -4,15 +4,33 @@ var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var points = 0
 var scoreLabel: Label
-
+signal newWave
 @onready var _viewport = $CanvasLayer
 @onready var score = $CanvasLayer/ScoreLabel
-
+var canSpawn = true
+var waveNumber = 1
+var totalZombies = 5
 func _ready():
 	scoreLabel = get_node("CanvasLayer/ScoreLabel")
 	update_score_label()
+
+func _physics_process(delta):
+	var zombsSpawned = get_node("ZombieCounter").zombiesSpawned
+	var zombsKilled = get_node("ZombieCounter").zombiesKilled
+	if zombsSpawned >= totalZombies:
+		canSpawn = false
+	if (zombsKilled >= totalZombies):
+		on_new_wave()
+
+func on_new_wave():
+	newWave.emit()
+	canSpawn = true
+	waveNumber += 1
+	totalZombies = waveNumber * 5
+	print(waveNumber)
+	
 func _on_zombie_timer_timeout():
-	if (not isPlayerDead):
+	if (not isPlayerDead and canSpawn == true):
 		var spawnArray = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
 		var zombie = test_zombie_scene.instantiate()
 		var spawnLocation = spawnArray[randi()%4]
@@ -22,7 +40,6 @@ func _on_zombie_timer_timeout():
 
 func _on_zombie_killed(pointsScored):
 	points += pointsScored
-	print(points)
 	update_score_label()
 func update_score_label():
 	scoreLabel.text = "Score: %d" % points

@@ -54,7 +54,9 @@ func target(targetPos):
 func stop():
 	velocity = Vector2.ZERO
 	move_and_slide()
-
-
+func _on_player_detection_body_entered(body):
+	pass
+func _on_player_detection_body_exited(body):
+	pass
 
 

@@ -108,5 +108,4 @@ func _on_hitbox_no_health():
 	
 func _on_stamin_reg_timeout():
 	stamina_regening = true
-	print("balls")
 	
