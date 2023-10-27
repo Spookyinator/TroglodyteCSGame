@@ -5,7 +5,7 @@ extends Node2D
 @onready var _viewport = $CanvasLayer
 @onready var score = $CanvasLayer/ScoreLabel
 
-const POWER_UP_RATE = 0.01
+const POWER_UP_RATE = 0.5
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var points = 0

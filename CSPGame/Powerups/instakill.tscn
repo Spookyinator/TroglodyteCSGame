@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dio7y2hia215d"]
+[gd_scene load_steps=7 format=3 uid="uid://bglscehllvyx"]
 
-[ext_resource type="Script" path="res://Powerups/test_powerup.gd" id="1_870q5"]
+[ext_resource type="Script" path="res://Powerups/instakill.gd" id="1_pl37v"]
 [ext_resource type="Texture2D" uid="uid://5vene16ajehe" path="res://Assets/instakill powerup.png" id="2_t1aow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb8g7"]
-size = Vector2(27, 28)
+size = Vector2(28, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipyjg"]
 atlas = ExtResource("2_t1aow")
@@ -24,20 +24,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_kgtpl")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 10.0
 }]
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("1_870q5")
+script = ExtResource("1_pl37v")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1)
 shape = SubResource("RectangleShape2D_vb8g7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_iqsav")
-frame_progress = 0.407427
+animation = &"idle"
