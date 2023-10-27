@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=11 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
@@ -237,6 +237,11 @@ position_smoothing_speed = 10.0
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer"]
+offset_left = 129.0
+offset_right = 232.0
 offset_bottom = 23.0
 
 [node name="WallCollisions" type="StaticBody2D" parent="."]

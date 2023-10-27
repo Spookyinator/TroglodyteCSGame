@@ -1,20 +1,26 @@
 extends Node2D
+#zombie scene, power up scene
 @export var test_zombie_scene: PackedScene
 @export var power_up_scene: PackedScene
+@onready var _viewport = $CanvasLayer
+@onready var score = $CanvasLayer/ScoreLabel
+
+const POWER_UP_RATE = 0.01
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var points = 0
 var scoreLabel: Label
-signal newWave
-@onready var _viewport = $CanvasLayer
-@onready var score = $CanvasLayer/ScoreLabel
+var waveLabel: Label
 var canSpawn = true
 var waveNumber = 1
+
 var totalZombies = 5
+signal newWave
 func _ready():
 	scoreLabel = get_node("CanvasLayer/ScoreLabel")
+	waveLabel = get_node("CanvasLayer/WaveLabel")
 	update_score_label()
-
+	update_wave_label()
 func _physics_process(delta):
 	var zombsSpawned = get_node("ZombieCounter").zombiesSpawned
 	var zombsKilled = get_node("ZombieCounter").zombiesKilled
@@ -28,7 +34,8 @@ func on_new_wave():
 	canSpawn = true
 	waveNumber += 1
 	totalZombies = waveNumber * 5
-	print(waveNumber)
+	#print(waveNumber)
+	update_wave_label()
 	
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead and canSpawn == true):
@@ -37,12 +44,14 @@ func _on_zombie_timer_timeout():
 		var spawnLocation = spawnArray[randi()%4]
 		zombie.global_position = get_node(spawnLocation).global_position
 		zombie.isKilled.connect(_on_zombie_killed)
+		zombie.isHit.connect(_on_zombie_hit)
 		add_child(zombie)
-
+func _on_zombie_hit(pointsScored):
+	points += pointsScored
 func _on_zombie_killed(pointsScored, x, y):
 	points += pointsScored
 	update_score_label()
-	if randf() < 0.05:
+	if randf() < POWER_UP_RATE:
 		spawn_power_up(x, y)
 func spawn_power_up(x, y):
 	var powerup = power_up_scene.instantiate()
@@ -50,6 +59,8 @@ func spawn_power_up(x, y):
 	add_child(powerup);
 func update_score_label():
 	scoreLabel.text = "Score: %d" % points
+func update_wave_label():
+	waveLabel.text = "Wave %d" % waveNumber
 func _on_player_player_dead():
 	var game_over_instance = gameOver.instantiate()
 	score.visible = false

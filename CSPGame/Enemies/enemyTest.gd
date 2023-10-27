@@ -14,7 +14,7 @@ var player = null
 var gameOver = false
 
 signal isKilled
-
+signal isHit
 func _physics_process(_delta):
 	player = playerDetection.player
 	if player != null:
@@ -43,7 +43,7 @@ func _on_hitbox_no_health():
 
 @warning_ignore("unused_parameter")
 func _on_zombie_hit(area):
-	isKilled.emit(HITPOINTS) # Replace with function body.
+	isHit.emit(HITPOINTS) # Replace with function body.
 
 
 func target(targetPos):
