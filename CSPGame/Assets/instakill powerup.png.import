@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brcktub6qmj6x"
-path="res://.godot/imported/2rightarrow.png-7da360e785d4d32d0fb0e445d8ecd86f.ctex"
+uid="uid://5vene16ajehe"
+path="res://.godot/imported/instakill powerup.png-c145cd8a2b5446bbc689d682c08c424b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2rightarrow.png"
-dest_files=["res://.godot/imported/2rightarrow.png-7da360e785d4d32d0fb0e445d8ecd86f.ctex"]
+source_file="res://Assets/instakill powerup.png"
+dest_files=["res://.godot/imported/instakill powerup.png-c145cd8a2b5446bbc689d682c08c424b.ctex"]
 
 [params]
 
