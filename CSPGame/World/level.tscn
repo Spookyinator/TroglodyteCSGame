@@ -244,6 +244,14 @@ offset_left = 129.0
 offset_right = 232.0
 offset_bottom = 23.0
 
+[node name="WaveAnnouncement" type="Label" parent="CanvasLayer"]
+offset_left = 75.0
+offset_top = 55.0
+offset_right = 260.0
+offset_bottom = 150.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WallCollisions" type="StaticBody2D" parent="."]
 collision_mask = 0
 
@@ -267,8 +275,12 @@ polygon = PackedVector2Array(0, 191, 16, 191, 16, 0, 0, 0)
 position = Vector2(162, 97)
 shape = SubResource("RectangleShape2D_df5sg")
 
+[node name="GraceTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
 [connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
+[connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timer_timeout"]
 
 [editable path="ZombieCounter"]
