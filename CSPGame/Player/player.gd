@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal player_dead
+signal update_score
 const SPEED = 65.0
 const slideSPEED = 90.0
 const bullet_speed = 500.0
@@ -19,6 +20,7 @@ var stamina_timer = false
 var bullet  = preload("res://Weapons/bullet.tscn")
 var game_over = preload("res://Screens/gameOver.tscn")
 
+var points = 0
 @onready var pivot = $Pivot
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
@@ -109,3 +111,6 @@ func _on_hitbox_no_health():
 func _on_stamin_reg_timeout():
 	stamina_regening = true
 	
+func on_get_points(pointsGiven):
+	update_score.emit()
+	points += pointsGiven

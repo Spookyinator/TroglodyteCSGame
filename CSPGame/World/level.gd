@@ -5,24 +5,24 @@ extends Node2D
 @onready var _viewport = $CanvasLayer
 #@onready var score = $CanvasLayer/ScoreLabel
 @onready var grace_timer = $GraceTimer
-const POWER_UP_RATE = 0.5
+const POWER_UP_RATE = 0.05
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
-var points = 0
 var scoreLabel: Label
 var waveLabel: Label
 var waveAnnouncement: Label
 var canSpawn = true
 var waveNumber = 1
-
 var totalZombies = 5
 signal newWave
+signal givePoints
 func _ready():
 	scoreLabel = get_node("CanvasLayer/ScoreLabel")
 	waveLabel = get_node("CanvasLayer/WaveLabel")
 	waveAnnouncement = get_node("CanvasLayer/WaveAnnouncement")
 	update_score_label()
 	update_wave_label()
+
 func _physics_process(delta):
 	var zombsSpawned = get_node("ZombieCounter").zombiesSpawned
 	var zombsKilled = get_node("ZombieCounter").zombiesKilled
@@ -50,9 +50,10 @@ func _on_zombie_timer_timeout():
 		zombie.isHit.connect(_on_zombie_hit)
 		add_child(zombie)
 func _on_zombie_hit(pointsScored):
-	points += pointsScored
+	givePoints.emit(pointsScored)
+	update_score_label()
 func _on_zombie_killed(pointsScored, x, y):
-	points += pointsScored
+	givePoints.emit(pointsScored)
 	update_score_label()
 	if randf() < POWER_UP_RATE:
 		spawn_power_up(x, y)
@@ -62,7 +63,7 @@ func spawn_power_up(x, y):
 	add_child(powerup)
 #LABELS	
 func update_score_label():
-	scoreLabel.text = "Score: %d" % points
+	scoreLabel.text = "Score: %d" % get_node("Player").points
 func update_wave_label():
 	waveLabel.text = "Wave %d" % waveNumber
 func display_new_wave():
