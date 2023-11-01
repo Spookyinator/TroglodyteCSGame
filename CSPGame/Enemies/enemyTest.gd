@@ -31,11 +31,8 @@ func update_health():
 	var health = hitbox.health
 	var max_health = hitbox.max_health
 	var health_bar = $HealthBar
-	var health_percent = health/max_health
-	if health >= 1:
-		health_bar.value = health_percent * 100
-	if health <= 0:
-		health_bar.value = 0
+	health_bar.max_value = max_health
+	health_bar.value = health
 
 func _on_hitbox_no_health():
 	isKilled.emit(KILLPOINTS, position.x, position.y)
