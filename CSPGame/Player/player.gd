@@ -17,6 +17,9 @@ var stamina = 100.0
 var stamina_regening = false
 var stamina_timer = false
 
+var health_regen = false
+var can_heal = true
+
 var bullet  = preload("res://Weapons/bullet.tscn")
 var game_over = preload("res://Screens/gameOver.tscn")
 
@@ -25,6 +28,10 @@ var points = 0
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
 @onready var stamina_reg = $StaminReg
+
+@onready var hitbox = $Hitbox
+@onready var health_bar = $CanvasLayer/HealthBar
+@onready var health_timer = $HealthReg
 
 func _physics_process(delta):
 	stamina_bar.value = stamina
@@ -70,7 +77,7 @@ func _physics_process(delta):
 			velocity.y = shooting_speed * direction.y
 		else:
 			velocity.y = lerp(shooting_speed, 0.0, 1.0)
-	
+
 	if Input.is_action_pressed("slide") and stamina >= 1:
 		stamina_regening = false
 		_state = STATE.SLIDE
@@ -93,8 +100,19 @@ func _physics_process(delta):
 		stamina_reg.start()
 		stamina_timer = true
 		
+	if hitbox.health >= hitbox.max_health:
+		health_regen = false
+		can_heal = true
+	if hitbox.health < hitbox.max_health and health_regen == false and can_heal == true:
+		health_timer.start()
+		can_heal = false
+		print(hitbox.health)
+	if health_regen == true:
+		hitbox.health += .01
+		
 	pivot.look_at(get_global_mouse_position())
 	move_and_slide()
+	update_health()
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
@@ -114,3 +132,16 @@ func _on_stamin_reg_timeout():
 func on_get_points(pointsGiven):
 	update_score.emit()
 	points += pointsGiven
+func update_health():
+	health_bar.max_value = hitbox.max_health
+	health_bar.value = hitbox.health
+
+func _on_health_reg_timeout():
+	health_regen = true
+	health_timer.stop()
+	print(health_regen)
+
+func _on_hitbox_hit():
+	health_regen = false
+	can_heal = true
+	
