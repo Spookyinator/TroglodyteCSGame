@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5vene16ajehe" path="res://Assets/instakill powerup.png" id="2_t1aow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb8g7"]
-size = Vector2(28, 33)
+size = Vector2(12, 11.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipyjg"]
 atlas = ExtResource("2_t1aow")
@@ -34,9 +34,16 @@ script = ExtResource("1_pl37v")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
 shape = SubResource("RectangleShape2D_vb8g7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_iqsav")
 animation = &"idle"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vb8g7")
