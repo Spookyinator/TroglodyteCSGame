@@ -246,8 +246,6 @@ position_smoothing_speed = 10.0
 script = ExtResource("7_6xdi5")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
-position = Vector2(481, 97)
-enabled = false
 script = ExtResource("8_taq2d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -316,16 +314,8 @@ shape = SubResource("RectangleShape2D_dgmrn")
 [node name="TopLeft" type="Marker2D" parent="."]
 gizmo_extents = 199.5
 
-[node name="TopLeft2" type="Marker2D" parent="."]
-position = Vector2(323, 2)
-gizmo_extents = 199.5
-
 [node name="BottomRight" type="Marker2D" parent="."]
 position = Vector2(321, 196)
-gizmo_extents = 199.5
-
-[node name="BottomRight2" type="Marker2D" parent="."]
-position = Vector2(639, 188)
 gizmo_extents = 199.5
 
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
