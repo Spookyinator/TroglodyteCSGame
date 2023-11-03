@@ -1,6 +1,6 @@
 extends CharacterBody2D
 signal player_dead
-signal update_score
+
 const SPEED = 65.0
 const slideSPEED = 90.0
 const bullet_speed = 500.0
@@ -24,6 +24,8 @@ var bullet  = preload("res://Weapons/bullet.tscn")
 var game_over = preload("res://Screens/gameOver.tscn")
 
 var points = 0
+var gun_level = 0
+var isInstaKill = false
 @onready var pivot = $Pivot
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
@@ -32,6 +34,8 @@ var points = 0
 @onready var hitbox = $Hitbox
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var health_timer = $HealthReg
+
+const GUN_TYPES = ["Pistol","Shotgun","SMG"]
 
 func _physics_process(delta):
 	stamina_bar.value = stamina
@@ -116,6 +120,12 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
+	var hurtbox = bullet_instance.get_node("Hurtbox")
+	if (not isInstaKill):
+		if (not gun_level == 0):
+			hurtbox.damage = gun_level*1.5
+	else:
+		hurtbox.damage = hurtbox.INSTANT_DEATH
 	bullet_instance.position = chamber.global_position
 	bullet_instance.rotation = pivot.global_rotation
 	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(bullet_instance.rotation),Vector2())
@@ -130,7 +140,6 @@ func _on_stamin_reg_timeout():
 	stamina_regening = true
 	
 func on_get_points(pointsGiven):
-	update_score.emit()
 	points += pointsGiven
 func update_health():
 	health_bar.max_value = hitbox.max_health
@@ -144,4 +153,16 @@ func _on_health_reg_timeout():
 func _on_hitbox_hit():
 	health_regen = false
 	can_heal = true
-	
+
+func get_upgrade(gun_type,upgrade_level):
+	print("Gun %s upgraded to level %d" % [GUN_TYPES[gun_type],upgrade_level])
+	gun_level = upgrade_level
+
+func activate_instakill():
+	print("INSTAKILL ACTIVATED!")
+	isInstaKill = true
+	get_node("InstaKillTimer").start()
+
+func _on_insta_kill_timeout():
+	print("Instakill deactivated!")
+	isInstaKill = false

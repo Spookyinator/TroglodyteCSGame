@@ -18,12 +18,13 @@ func _on_body_entered(body):
 		if (not hasBoughtFirst and points >= FIRST_UPGRADE):
 			exchangeDone = true
 			player.on_get_points(FIRST_UPGRADE*-1)
-			
+			player.get_upgrade(0,1)
 			hasBoughtFirst = true
 		elif (hasBoughtFirst and not hasBoughtSecond and points >= SECOND_UPGRADE):
 			exchangeDone = true
 			player.on_get_points(SECOND_UPGRADE*-1)
 			hasBoughtSecond = true
+			player.get_upgrade(0,2)
 			#print("Player has %d points after buying the second pistol upgrade" % player.points)
 	
 
