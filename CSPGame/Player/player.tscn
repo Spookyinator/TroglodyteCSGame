@@ -74,7 +74,11 @@ max_value = 3.0
 value = 3.0
 show_percentage = false
 
+[node name="InstaKillTimer" type="Timer" parent="."]
+wait_time = 30.0
+
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 [connection signal="timeout" from="StaminReg" to="." method="_on_stamin_reg_timeout"]
 [connection signal="timeout" from="HealthReg" to="." method="_on_health_reg_timeout"]
+[connection signal="timeout" from="InstaKillTimer" to="." method="_on_insta_kill_timeout"]

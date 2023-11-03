@@ -6,3 +6,8 @@ extends Area2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_animated_sprite.play("idle")
+
+
+func on_powerup_consumed():
+	get_node("PlayerDetection").player.activate_instakill()
+	queue_free() # Replace with function body.

@@ -30,6 +30,8 @@ func _physics_process(delta):
 		canSpawn = false
 	if (zombsKilled >= totalZombies):
 		on_new_wave()
+	if (not isPlayerDead):
+		update_score_label()
 
 func on_new_wave():
 	newWave.emit()
@@ -51,10 +53,10 @@ func _on_zombie_timer_timeout():
 		add_child(zombie)
 func _on_zombie_hit(pointsScored):
 	givePoints.emit(pointsScored)
-	update_score_label()
+	
 func _on_zombie_killed(pointsScored, x, y):
 	givePoints.emit(pointsScored)
-	update_score_label()
+	#update_score_label()
 	if randf() < POWER_UP_RATE:
 		spawn_power_up(x, y)
 func spawn_power_up(x, y):
