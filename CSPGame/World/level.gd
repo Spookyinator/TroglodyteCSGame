@@ -82,7 +82,6 @@ func _on_player_player_dead():
 	var game_over = gameOver.instantiate()
 
 
-
 func _on_grace_timer_timeout():
 	canSpawn = true
 	waveAnnouncement.visible = false # Replace with function body.

@@ -34,6 +34,8 @@ var isInstaKill = false
 @onready var hitbox = $Hitbox
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var health_timer = $HealthReg
+@onready var powerup_countdown = $CanvasLayer/PowerupCountdown
+@onready var instakill_timer = $InstaKillTimer
 
 const GUN_TYPES = ["Pistol","Shotgun","SMG"]
 
@@ -117,6 +119,8 @@ func _physics_process(delta):
 	pivot.look_at(get_global_mouse_position())
 	move_and_slide()
 	update_health()
+	if (isInstaKill):
+		update_powerup_timer()
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
@@ -161,8 +165,14 @@ func get_upgrade(gun_type,upgrade_level):
 func activate_instakill():
 	print("INSTAKILL ACTIVATED!")
 	isInstaKill = true
-	get_node("InstaKillTimer").start()
+	instakill_timer.start()
 
 func _on_insta_kill_timeout():
 	print("Instakill deactivated!")
 	isInstaKill = false
+	powerup_countdown.visible = false
+
+func update_powerup_timer():
+	var timeLeft: int = instakill_timer.time_left
+	powerup_countdown.visible = true
+	powerup_countdown.text = "%d" % timeLeft
