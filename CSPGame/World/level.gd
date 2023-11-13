@@ -3,7 +3,7 @@ extends Node2D
 @export var test_zombie_scene: PackedScene
 @export var power_up_scene: PackedScene
 @onready var _viewport = $CanvasLayer
-#@onready var score = $CanvasLayer/ScoreLabel
+@onready var camera = $Camera2D
 @onready var grace_timer = $GraceTimer
 const POWER_UP_RATE = 0.05
 var isPlayerDead = false
@@ -14,6 +14,7 @@ var waveAnnouncement: Label
 var canSpawn = true
 var waveNumber = 1
 var totalZombies = 5
+var player_room_location = 1
 signal newWave
 signal givePoints
 func _ready():
@@ -85,3 +86,14 @@ func _on_player_player_dead():
 func _on_grace_timer_timeout():
 	canSpawn = true
 	waveAnnouncement.visible = false # Replace with function body.
+
+
+func _on_doorway_entered(body):
+	var camera_locations = ["/root/Level/CameraLocation1","/root/Level/CameraLocation2"]
+	if (player_room_location == 1):
+		player_room_location = 2
+	else:
+		player_room_location = 1
+	camera.global_position = get_node(camera_locations[player_room_location-1]).global_position
+	print("Player is in room %d" % player_room_location)
+	print(camera.global_position)

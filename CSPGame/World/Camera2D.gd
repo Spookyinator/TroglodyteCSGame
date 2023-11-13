@@ -11,4 +11,5 @@ func _ready():
 	limit_top = up
 	limit_right = right
 	limit_bottom = down
+	make_current()
 

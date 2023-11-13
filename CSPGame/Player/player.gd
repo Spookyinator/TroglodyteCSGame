@@ -36,9 +36,11 @@ var isInstaKill = false
 @onready var health_timer = $HealthReg
 @onready var powerup_countdown = $CanvasLayer/PowerupCountdown
 @onready var instakill_timer = $InstaKillTimer
-
+@onready var instakill_display = $CanvasLayer/InstaKillDisplay
 const GUN_TYPES = ["Pistol","Shotgun","SMG"]
 
+func _ready():
+	instakill_display.visible = false
 func _physics_process(delta):
 	stamina_bar.value = stamina
 	if stamina >= 100:
@@ -166,13 +168,15 @@ func activate_instakill():
 	print("INSTAKILL ACTIVATED!")
 	isInstaKill = true
 	instakill_timer.start()
+	instakill_display.visible = true
+	powerup_countdown.visible = true
 
 func _on_insta_kill_timeout():
 	print("Instakill deactivated!")
 	isInstaKill = false
 	powerup_countdown.visible = false
+	instakill_display.visible = false
 
 func update_powerup_timer():
-	var timeLeft: int = instakill_timer.time_left
-	powerup_countdown.visible = true
+	var timeLeft: int = instakill_timer.time_left	
 	powerup_countdown.text = "%d" % timeLeft

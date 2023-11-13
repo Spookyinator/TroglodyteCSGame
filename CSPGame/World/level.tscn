@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=15 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dev3g4a0i2m0s" path="res://WaveSystem/zombie_counter.tscn" id="6_4g4tb"]
 [ext_resource type="Script" path="res://World/Camera2D.gd" id="7_6xdi5"]
 [ext_resource type="PackedScene" uid="uid://by5v0l51q3k2t" path="res://Spending Your Points/PistolUpgrade.tscn" id="8_jsfbd"]
-[ext_resource type="Script" path="res://World/Camera2D2.gd" id="8_taq2d"]
 [ext_resource type="Script" path="res://Hitboxes & Hurtboxes/camerachange.gd" id="9_2o8xr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f24y4"]
@@ -194,7 +193,7 @@ sources/0 = SubResource("TileSetAtlasSource_f24y4")
 size = Vector2(322, 196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgmrn"]
-size = Vector2(88.1225, 121.026)
+size = Vector2(29.1043, 139.763)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xbnhj")
@@ -244,11 +243,6 @@ process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("7_6xdi5")
-
-[node name="Camera2D2" type="Camera2D" parent="."]
-position = Vector2(481, 97)
-enabled = false
-script = ExtResource("8_taq2d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -302,15 +296,16 @@ wait_time = 5.0
 [node name="PistolUpgrade" parent="." instance=ExtResource("8_jsfbd")]
 position = Vector2(54, 20)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Doorway" type="Area2D" parent="."]
 position = Vector2(357, 92)
 scale = Vector2(0.652821, 0.765584)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_2o8xr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.66893e-06, 1.30619)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway"]
+position = Vector2(-45.9544, 3.91858)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dgmrn")
 
 [node name="TopLeft" type="Marker2D" parent="."]
@@ -328,12 +323,19 @@ gizmo_extents = 199.5
 position = Vector2(639, 188)
 gizmo_extents = 199.5
 
+[node name="CameraLocation2" type="Marker2D" parent="."]
+position = Vector2(481, 97)
+
+[node name="CameraLocation1" type="Marker2D" parent="."]
+position = Vector2(163, 95)
+
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
 [connection signal="player_dead" from="Player" to="." method="_on_player_player_dead"]
 [connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Doorway" to="." method="_on_doorway_entered"]
+[connection signal="body_entered" from="Doorway" to="Doorway" method="_on_body_entered"]
+[connection signal="body_exited" from="Doorway" to="Doorway" method="_on_body_exited"]
 
 [editable path="ZombieCounter"]
