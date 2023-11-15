@@ -5,7 +5,7 @@ extends Node2D
 @onready var _viewport = $CanvasLayers
 @onready var camera = $Camera2D
 @onready var grace_timer = $GraceTimer
-const POWER_UP_RATE = 0.05
+const POWER_UP_RATE = 0.5
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var scoreLabel: Label
@@ -51,6 +51,7 @@ func _on_zombie_timer_timeout():
 		zombie.global_position = get_node(spawnLocation).global_position
 		zombie.isKilled.connect(_on_zombie_killed)
 		zombie.isHit.connect(_on_zombie_hit)
+		zombie.add_to_group("Enemies")
 		add_child(zombie)
 func _on_zombie_hit(pointsScored):
 	givePoints.emit(pointsScored)
@@ -63,8 +64,14 @@ func _on_zombie_killed(pointsScored, x, y):
 func spawn_power_up(x, y):
 	var powerup = power_up_scene.instantiate()
 	powerup.global_position = Vector2(x, y)
+	powerup.instakill_zombies.connect(_on_zombies_instakill)
 	add_child(powerup)
 #LABELS	
+
+func _on_zombies_instakill():
+	var zombies = get_tree().get_nodes_in_group("Enemies")
+	for zombie in zombies:
+		zombie._on_hitbox_no_health()
 func update_score_label():
 	scoreLabel.text = "Score: %d" % get_node("Player").points
 func update_wave_label():

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal player_dead
+signal instakill_zombies
 
 const SPEED = 65.0
 const slideSPEED = 90.0
@@ -170,6 +171,7 @@ func activate_instakill():
 	instakill_timer.start()
 	instakill_display.visible = true
 	powerup_countdown.visible = true
+	instakill_zombies.emit()
 
 func _on_insta_kill_timeout():
 	print("Instakill deactivated!")
