@@ -2,7 +2,7 @@ extends Node2D
 #zombie scene, power up scene
 @export var test_zombie_scene: PackedScene
 @export var power_up_scene: PackedScene
-@onready var _viewport = $CanvasLayer
+@onready var _viewport = $CanvasLayers
 @onready var camera = $Camera2D
 @onready var grace_timer = $GraceTimer
 const POWER_UP_RATE = 0.05
