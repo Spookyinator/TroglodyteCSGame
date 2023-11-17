@@ -15,4 +15,3 @@ func on_powerup_consumed():
 
 func _on_despawn_timer_timeout():
 	queue_free()
-	

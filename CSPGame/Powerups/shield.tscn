@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfykoir2401e1"]
+
+[ext_resource type="Script" path="res://Powerups/shield.gd" id="1_hse7w"]
+[ext_resource type="Texture2D" uid="uid://wcyygc4q1lgi" path="res://Assets/shield powerup.png" id="2_3orwa"]
+[ext_resource type="Script" path="res://Powerups/PlayerDetection.gd" id="3_1hgpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb8g7"]
+size = Vector2(12, 11.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45iss"]
+atlas = ExtResource("2_3orwa")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_457rj"]
+atlas = ExtResource("2_3orwa")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8bq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45iss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_457rj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_hse7w")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_vb8g7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_a8bq8")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_1hgpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vb8g7")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetection" to="PlayerDetection" method="_on_body_entered"]
+[connection signal="powerup_consumed" from="PlayerDetection" to="." method="on_powerup_consumed"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
