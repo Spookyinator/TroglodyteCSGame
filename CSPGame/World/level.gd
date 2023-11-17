@@ -5,7 +5,7 @@ extends Node2D
 @onready var _viewport = $CanvasLayer
 @onready var camera = $Camera2D
 @onready var grace_timer = $GraceTimer
-const POWER_UP_RATE = 0.05
+const POWER_UP_RATE = 0.03
 var isPlayerDead = false
 var gameOver = preload("res://Screens/gameOver.tscn")
 var scoreLabel: Label
