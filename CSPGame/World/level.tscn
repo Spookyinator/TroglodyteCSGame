@@ -345,7 +345,6 @@ script = ExtResource("9_2o8xr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway"]
 position = Vector2(-68.7401, 7.02074)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dgmrn")
 
 [node name="TopLeft" type="Marker2D" parent="."]

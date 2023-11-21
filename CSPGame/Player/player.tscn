@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8bfpaktqyh0m"]
+[gd_scene load_steps=8 format=3 uid="uid://b8bfpaktqyh0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
 [ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="2_22xg2"]
 [ext_resource type="Texture2D" uid="uid://v1camt1llvn7" path="res://Assets/instakill display.png" id="3_t5ijd"]
+[ext_resource type="Texture2D" uid="uid://b8o7nodjgbdyg" path="res://Assets/shield_frame_2.png" id="4_i8o72"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kctsf"]
 
@@ -75,24 +76,44 @@ max_value = 3.0
 value = 3.0
 show_percentage = false
 
-[node name="PowerupCountdown" type="Label" parent="CanvasLayer"]
-offset_left = 55.0
-offset_top = 156.0
-offset_right = 102.0
-offset_bottom = 182.0
+[node name="InstaKillCountdown" type="Label" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 154.0
+offset_right = 87.0
+offset_bottom = 180.0
+
+[node name="ShieldCountdown" type="Label" parent="CanvasLayer"]
+offset_left = 42.0
+offset_top = 113.0
+offset_right = 89.0
+offset_bottom = 139.0
 
 [node name="InstaKillDisplay" type="TextureRect" parent="CanvasLayer"]
-offset_top = 120.0
-offset_right = 50.0
+offset_top = 146.0
+offset_right = 30.0
 offset_bottom = 179.0
 texture = ExtResource("3_t5ijd")
+expand_mode = 5
+
+[node name="ShieldDisplay" type="TextureRect" parent="CanvasLayer"]
+offset_left = -1.0
+offset_top = 112.0
+offset_right = 30.0
+offset_bottom = 144.0
+texture = ExtResource("4_i8o72")
 expand_mode = 5
 
 [node name="InstaKillTimer" type="Timer" parent="."]
 wait_time = 30.0
 
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="shield_off" from="." to="Hitbox" method="_on_player_shield_off"]
+[connection signal="shield_on" from="." to="Hitbox" method="on_shield_activated"]
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
 [connection signal="timeout" from="StaminReg" to="." method="_on_stamin_reg_timeout"]
 [connection signal="timeout" from="HealthReg" to="." method="_on_health_reg_timeout"]
 [connection signal="timeout" from="InstaKillTimer" to="." method="_on_insta_kill_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

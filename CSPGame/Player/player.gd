@@ -1,7 +1,8 @@
 extends CharacterBody2D
 signal player_dead
 signal instakill_zombies
-
+signal shield_on
+signal shield_off
 const SPEED = 65.0
 const slideSPEED = 90.0
 const bullet_speed = 500.0
@@ -27,6 +28,8 @@ var game_over = preload("res://Screens/gameOver.tscn")
 var points = 0
 var gun_level = 0
 var isInstaKill = false
+
+var isShield = false
 @onready var pivot = $Pivot
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
@@ -35,13 +38,17 @@ var isInstaKill = false
 @onready var hitbox = $Hitbox
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var health_timer = $HealthReg
-@onready var powerup_countdown = $CanvasLayer/PowerupCountdown
+@onready var instakill_countdown = $CanvasLayer/InstaKillCountdown
 @onready var instakill_timer = $InstaKillTimer
 @onready var instakill_display = $CanvasLayer/InstaKillDisplay
+@onready var shield_countdown = $CanvasLayer/ShieldCountdown
+@onready var shield_timer = $ShieldTimer
+@onready var shield_display = $CanvasLayer/ShieldDisplay
 const GUN_TYPES = ["Pistol","Shotgun","SMG"]
 
 func _ready():
 	instakill_display.visible = false
+	shield_display.visible = false
 func _physics_process(delta):
 	stamina_bar.value = stamina
 	if stamina >= 100:
@@ -170,15 +177,35 @@ func activate_instakill():
 	isInstaKill = true
 	instakill_timer.start()
 	instakill_display.visible = true
-	powerup_countdown.visible = true
+	instakill_countdown.visible = true
 	instakill_zombies.emit()
-
+func activate_shield():
+	print("SHIELD ACTIVATED!")
+	isShield = true
+	shield_timer.start()
+	shield_display.visible = true
+	shield_countdown.visible = true
+	shield_on.emit()
+	instakill_zombies.emit()
+	
 func _on_insta_kill_timeout():
 	print("Instakill deactivated!")
 	isInstaKill = false
-	powerup_countdown.visible = false
+	instakill_countdown.visible = false
 	instakill_display.visible = false
-
+func _on_shield_timer_timeout():
+	print("Shield deactivated!")
+	isShield = false
+	shield_display.visible = false
+	shield_countdown.visible = false
+	shield_off.emit()
 func update_powerup_timer():
-	var timeLeft: int = instakill_timer.time_left	
-	powerup_countdown.text = "%d" % timeLeft
+	if (isInstaKill):
+		var instakillTimeLeft: int = instakill_timer.time_left	
+		instakill_countdown.text = "%d" % instakillTimeLeft
+	if (isShield):
+		var shieldTimeLeft: int = shield_timer.time_left
+		shield_countdown.text = "%d" % shieldTimeLeft
+
+
+
