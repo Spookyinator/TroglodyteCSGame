@@ -43,7 +43,7 @@ func _on_zombie_hit(area):
 	isHit.emit(HITPOINTS) # Replace with function body.
 
 
-func target(targetPos):
+func target(targetPos): 
 	velocity = position.direction_to(targetPos) * SPEED
 	skin.look_at(targetPos)
 	move_and_slide()
