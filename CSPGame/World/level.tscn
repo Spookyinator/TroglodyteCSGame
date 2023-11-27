@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=17 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://World/Camera2D.gd" id="7_6xdi5"]
 [ext_resource type="PackedScene" uid="uid://by5v0l51q3k2t" path="res://Spending Your Points/PistolUpgrade.tscn" id="8_jsfbd"]
 [ext_resource type="Script" path="res://Hitboxes & Hurtboxes/camerachange.gd" id="9_2o8xr"]
+[ext_resource type="Script" path="res://World/Doorway2.gd" id="12_7u0ti"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f24y4"]
 texture = ExtResource("2_14ksr")
@@ -314,7 +315,11 @@ position = Vector2(0, 179)
 polygon = PackedVector2Array(0, 15, 318, 15, 319, 1, 0, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallCollisions"]
-polygon = PackedVector2Array(0, 191, 16, 191, 16, 0, 0, 0)
+polygon = PackedVector2Array(0, 191, 16, 191, 17, 116, 1, 116)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="WallCollisions"]
+position = Vector2(0, -128)
+polygon = PackedVector2Array(0, 191, 16, 191, 13, 125, -1, 126, -1, 129)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(305, 0)
@@ -347,6 +352,17 @@ script = ExtResource("9_2o8xr")
 position = Vector2(-68.7401, 7.02074)
 shape = SubResource("RectangleShape2D_dgmrn")
 
+[node name="Doorway2" type="Area2D" parent="."]
+position = Vector2(357, 92)
+scale = Vector2(0.652821, 0.765584)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_7u0ti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway2"]
+position = Vector2(-556.048, -3.8147e-06)
+shape = SubResource("RectangleShape2D_dgmrn")
+
 [node name="TopLeft" type="Marker2D" parent="."]
 gizmo_extents = 199.5
 
@@ -373,6 +389,11 @@ position = Vector2(494, 101)
 scale = Vector2(1.1, 1.1)
 zoom = Vector2(0.85, 0.95)
 
+[node name="Camera2D3" type="Camera2D" parent="."]
+position = Vector2(-163, 96)
+scale = Vector2(1.1, 1.1)
+zoom = Vector2(1.1, 0.95)
+
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]
 [connection signal="timeout" from="ZombieTimer" to="." method="_on_zombie_timer_timeout"]
@@ -381,5 +402,8 @@ zoom = Vector2(0.85, 0.95)
 [connection signal="body_entered" from="Doorway" to="." method="_on_doorway_entered"]
 [connection signal="body_entered" from="Doorway" to="Doorway" method="_on_body_entered"]
 [connection signal="body_exited" from="Doorway" to="Doorway" method="_on_body_exited"]
+[connection signal="body_entered" from="Doorway2" to="." method="_on_doorway_entered"]
+[connection signal="body_entered" from="Doorway2" to="Doorway2" method="_on_body_entered"]
+[connection signal="body_exited" from="Doorway2" to="Doorway2" method="_on_body_exited"]
 
 [editable path="ZombieCounter"]
