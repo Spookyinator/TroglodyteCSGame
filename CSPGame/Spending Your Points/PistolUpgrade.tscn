@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dlhqy4a7jm3ec" path="res://Assets/upgrade_machine.png" id="2_s1pxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxsny"]
-size = Vector2(16, 20)
+size = Vector2(11.3333, 6)
 
 [node name="PistolUpgrade" type="Area2D"]
 collision_layer = 0
@@ -12,6 +12,7 @@ collision_mask = 2
 script = ExtResource("1_5q72x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 14.5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_yxsny")
 
@@ -20,5 +21,40 @@ position = Vector2(1.42109e-14, 0.6)
 scale = Vector2(0.05, 0.0679687)
 texture = ExtResource("2_s1pxe")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -46.0
+offset_top = 18.0
+offset_right = 51.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 11
+text = "Press E to Interact"
+
+[node name="UpgradeMenu" type="PopupMenu" parent="."]
+visible = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Tier1" type="Button" parent="UpgradeMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Tier 1 - 500
+"
+
+[node name="Tier2" type="Button" parent="UpgradeMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Tier 2 - 1500
+"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="UpgradeMenu/MarginContainer/VBoxContainer/Tier1" to="." method="_on_tier_1_pressed"]
