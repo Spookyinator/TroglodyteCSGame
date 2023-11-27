@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:CSPGame/Assets/upgrade_machine.png.import
 uid="uid://br1e8assphq8"
 path="res://.godot/imported/upgrade_machine.png-f31b06d937fbc34aeed2419263c7864d.ctex"
+========
+uid="uid://wcyygc4q1lgi"
+path="res://.godot/imported/shield powerup.png-1297c178f8c2a95afc3b73dbe53dec71.ctex"
+>>>>>>>> 4c95fbd114f945b9db9f8d0a6e401d6a0600d845:CSPGame/Assets/shield powerup.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:CSPGame/Assets/upgrade_machine.png.import
 source_file="res://Assets/upgrade_machine.png"
 dest_files=["res://.godot/imported/upgrade_machine.png-f31b06d937fbc34aeed2419263c7864d.ctex"]
+========
+source_file="res://Assets/shield powerup.png"
+dest_files=["res://.godot/imported/shield powerup.png-1297c178f8c2a95afc3b73dbe53dec71.ctex"]
+>>>>>>>> 4c95fbd114f945b9db9f8d0a6e401d6a0600d845:CSPGame/Assets/shield powerup.png.import
 
 [params]
 
