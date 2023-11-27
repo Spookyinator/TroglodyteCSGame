@@ -63,16 +63,14 @@ func _on_zombie_killed(pointsScored, x, y):
 	if randf() < POWER_UP_RATE:
 		spawn_power_up(x, y)
 func spawn_power_up(x, y):
+	var powerup;
 	if randf() < 0.5:
-		var instakill_powerup = power_up_instakill_scene.instantiate()
-		instakill_powerup.global_position = Vector2(x, y)
-		instakill_powerup.instakill_zombies.connect(_on_zombies_instakill)
-		call_deferred("add_child",instakill_powerup)
+		powerup = power_up_instakill_scene.instantiate()
 	else:
-		var shield_powerup = power_up_shield_scene.instantiate()
-		shield_powerup.global_position = Vector2(x, y)
-		shield_powerup.instakill_zombies.connect(_on_zombies_instakill)
-		call_deferred("add_child",shield_powerup)
+		powerup = power_up_shield_scene.instantiate()
+	powerup.global_position = Vector2(x, y)
+	powerup.instakill_zombies.connect(_on_zombies_instakill)
+	call_deferred("add_child",powerup)
 #LABELS	
 
 func _on_zombies_instakill():
