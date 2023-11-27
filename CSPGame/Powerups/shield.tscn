@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfykoir2401e1"]
+[gd_scene load_steps=8 format=3 uid="uid://d1bhm6grbtetb"]
 
-[ext_resource type="Script" path="res://Powerups/shield.gd" id="1_hse7w"]
-[ext_resource type="Texture2D" uid="uid://wcyygc4q1lgi" path="res://Assets/shield powerup.png" id="2_3orwa"]
+[ext_resource type="Script" path="res://Powerups/powerup.gd" id="1_dhuq1"]
+[ext_resource type="Texture2D" uid="uid://8uee2h4u7xrl" path="res://Assets/shield powerup.png" id="2_3orwa"]
 [ext_resource type="Script" path="res://Powerups/PlayerDetection.gd" id="3_1hgpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb8g7"]
@@ -29,8 +29,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Area2D" type="Area2D"]
-script = ExtResource("1_hse7w")
+[node name="shield" type="Area2D"]
+script = ExtResource("1_dhuq1")
 
 [node name="Node2D" type="Node2D" parent="."]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
 [ext_resource type="PackedScene" uid="uid://bglscehllvyx" path="res://Powerups/instakill.tscn" id="3_41jts"]
-[ext_resource type="PackedScene" uid="uid://bfykoir2401e1" path="res://Powerups/shield.tscn" id="4_wplj7"]
+[ext_resource type="PackedScene" uid="uid://d1bhm6grbtetb" path="res://Powerups/shield.tscn" id="4_wplj7"]
 [ext_resource type="AudioStream" uid="uid://bep8crgabfj4x" path="res://MusicFiles/meathook.mp3" id="5_5ve35"]
 [ext_resource type="PackedScene" uid="uid://dev3g4a0i2m0s" path="res://WaveSystem/zombie_counter.tscn" id="6_4g4tb"]
 [ext_resource type="Script" path="res://World/Camera2D.gd" id="7_6xdi5"]
