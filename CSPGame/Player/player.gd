@@ -129,8 +129,7 @@ func _physics_process(delta):
 	pivot.look_at(get_global_mouse_position())
 	move_and_slide()
 	update_health()
-	if (isInstaKill):
-		update_powerup_timer()
+	update_powerup_timer()
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
@@ -187,7 +186,6 @@ func activate_powerup(powerup):
 		shield_display.visible = true
 		shield_countdown.visible = true
 		shield_on.emit()
-		instakill_zombies.emit()
 	
 func _on_insta_kill_timeout():
 	print("Instakill deactivated!")
