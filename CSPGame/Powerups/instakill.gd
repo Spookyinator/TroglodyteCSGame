@@ -11,3 +11,8 @@ func on_powerup_consumed():
 	get_node("PlayerDetection").player.activate_instakill()
 	instakill_zombies.emit()
 	queue_free() # Replace with function body.
+
+
+func _on_despawn_timer_timeout():
+	queue_free()
+	

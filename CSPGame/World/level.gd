@@ -2,7 +2,7 @@ extends Node2D
 #zombie scene, power up scene
 @export var test_zombie_scene: PackedScene
 @export var power_up_scene: PackedScene
-@onready var _viewport = $CanvasLayers
+@onready var _viewport = $CanvasLayer
 @onready var camera = $Camera2D
 @onready var grace_timer = $GraceTimer
 const POWER_UP_RATE = 0.03
@@ -65,7 +65,7 @@ func spawn_power_up(x, y):
 	var powerup = power_up_scene.instantiate()
 	powerup.global_position = Vector2(x, y)
 	powerup.instakill_zombies.connect(_on_zombies_instakill)
-	add_child(powerup)
+	call_deferred("add_child",powerup)
 #LABELS	
 
 func _on_zombies_instakill():

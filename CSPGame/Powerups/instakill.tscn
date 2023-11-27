@@ -51,5 +51,10 @@ script = ExtResource("3_addib")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vb8g7")
 
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="body_entered" from="PlayerDetection" to="PlayerDetection" method="_on_body_entered"]
 [connection signal="powerup_consumed" from="PlayerDetection" to="." method="on_powerup_consumed"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
