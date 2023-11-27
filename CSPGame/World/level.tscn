@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=19 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
 [ext_resource type="PackedScene" uid="uid://bglscehllvyx" path="res://Powerups/instakill.tscn" id="3_41jts"]
-[ext_resource type="PackedScene" uid="uid://bfykoir2401e1" path="res://Powerups/shield.tscn" id="4_wplj7"]
+[ext_resource type="PackedScene" uid="uid://d1bhm6grbtetb" path="res://Powerups/shield.tscn" id="4_wplj7"]
 [ext_resource type="AudioStream" uid="uid://bep8crgabfj4x" path="res://MusicFiles/meathook.mp3" id="5_5ve35"]
 [ext_resource type="PackedScene" uid="uid://dev3g4a0i2m0s" path="res://WaveSystem/zombie_counter.tscn" id="6_4g4tb"]
 [ext_resource type="Script" path="res://World/Camera2D.gd" id="7_6xdi5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Hitboxes & Hurtboxes/camerachange.gd" id="9_2o8xr"]
 [ext_resource type="Script" path="res://World/Doorway2.gd" id="12_7u0ti"]
 [ext_resource type="Script" path="res://World/Doorway3.gd" id="13_44fwc"]
+[ext_resource type="PackedScene" uid="uid://2cepntapguaq" path="res://Furniture/door.tscn" id="14_5jwk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f24y4"]
 texture = ExtResource("2_14ksr")
@@ -377,7 +378,6 @@ script = ExtResource("13_44fwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway3"]
 position = Vector2(-290.949, 134.293)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dgmrn")
 
 [node name="TopLeft" type="Marker2D" parent="."]
@@ -415,6 +415,9 @@ zoom = Vector2(1.1, 0.95)
 position = Vector2(162, 278)
 scale = Vector2(1.1, 1.1)
 zoom = Vector2(1, 0.95)
+
+[node name="door" parent="." instance=ExtResource("14_5jwk1")]
+position = Vector2(314, 49)
 
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]

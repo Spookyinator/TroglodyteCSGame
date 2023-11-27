@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://2cepntapguaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phjn1"]
+size = Vector2(20, 118)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x05he"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_45ng7"]
+
+[node name="door" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 49)
+shape = SubResource("RectangleShape2D_phjn1")
+
+[node name="DoorBoundary" type="MeshInstance2D" parent="."]
+modulate = Color(0.607843, 0.607843, 0.607843, 1)
+position = Vector2(-4.76837e-07, 49)
+scale = Vector2(20, 118)
+mesh = SubResource("BoxMesh_x05he")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 49)
+scale = Vector2(-21.102, 10.2499)
+mesh = SubResource("BoxMesh_45ng7")
