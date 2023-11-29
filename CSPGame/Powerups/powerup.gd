@@ -5,7 +5,7 @@ signal powerup_consumed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_animated_sprite.play("idle")
+	_animated_sprite.play("default")
 
 func on_powerup_consumed(powerup):
 	get_node("PlayerDetection").player.activate_powerup(powerup)

@@ -25,7 +25,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kgtpl")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 10.0
 }]
 
@@ -41,7 +41,6 @@ shape = SubResource("RectangleShape2D_vb8g7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_iqsav")
-animation = &"idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_mask = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://by5v0l51q3k2t"]
 
 [ext_resource type="Script" path="res://Spending Your Points/PistolUpgrade.gd" id="1_5q72x"]
-[ext_resource type="Texture2D" uid="uid://dlhqy4a7jm3ec" path="res://Assets/upgrade_machine.png" id="2_s1pxe"]
+[ext_resource type="Texture2D" uid="uid://bucubjsrq504f" path="res://Assets/upgrade_machine.png" id="2_s1pxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxsny"]
 size = Vector2(11.3333, 6)
@@ -58,3 +58,4 @@ text = "Tier 2 - 1500
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="pressed" from="UpgradeMenu/MarginContainer/VBoxContainer/Tier1" to="." method="_on_tier_1_pressed"]
+[connection signal="pressed" from="UpgradeMenu/MarginContainer/VBoxContainer/Tier2" to="." method="_on_tier_2_pressed"]
