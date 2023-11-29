@@ -17,8 +17,8 @@ const SECOND_UPGRADE = 1500
 signal updatePoints
 
 func _ready(): 
-	label.visible = false
-	upgrade_menu.visible = false
+	#label.visible = false
+	#upgrade_menu.visible = false
 	tier_2.disabled = true
 func _physics_process(delta):
 	if Input.is_action_just_pressed("interact") and label.visible == true:

@@ -22,6 +22,7 @@ scale = Vector2(0.05, 0.0679687)
 texture = ExtResource("2_s1pxe")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -46.0
 offset_top = 18.0
 offset_right = 51.0
@@ -33,6 +34,7 @@ text = "Press E to Interact"
 visible = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenu"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
@@ -41,6 +43,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Tier1" type="Button" parent="UpgradeMenu/MarginContainer/VBoxContainer"]
