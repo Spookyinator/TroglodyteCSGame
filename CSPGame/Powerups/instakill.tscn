@@ -79,11 +79,6 @@ shape = SubResource("RectangleShape2D_vb8g7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_iqsav")
-<<<<<<< Updated upstream
-=======
-animation = &"idle"
-frame_progress = 0.0470049
->>>>>>> Stashed changes
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_mask = 2
