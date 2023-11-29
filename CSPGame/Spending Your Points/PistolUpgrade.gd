@@ -38,8 +38,8 @@ func _on_body_exited(body):
 	#exchangeDone = false
 
 func _on_tier_1_pressed():
-	print(points)
-	if (points >= FIRST_UPGRADE):
+	print("PRESSED")
+	if (not hasBoughtFirst and points >= FIRST_UPGRADE):
 		exchangeDone = true
 		player.on_get_points(FIRST_UPGRADE*-1)
 		player.get_upgrade(0,1)
@@ -49,7 +49,7 @@ func _on_tier_1_pressed():
 		tier_2.disabled = false
 			
 func _on_tier_2_pressed():
-	if (points >= SECOND_UPGRADE):
+	if (hasBoughtFirst and not hasBoughtSecond and points >= SECOND_UPGRADE):
 		print("le upgrade bought!!2")
 		exchangeDone = true
 		player.on_get_points(SECOND_UPGRADE*-1)
