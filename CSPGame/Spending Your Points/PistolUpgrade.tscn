@@ -31,10 +31,12 @@ theme_override_font_sizes/font_size = 11
 text = "Press E to Interact"
 
 [node name="UpgradeMenu" type="PopupMenu" parent="."]
+size = Vector2i(126, 100)
 visible = true
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeMenu"]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
@@ -43,17 +45,19 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Tier1" type="Button" parent="UpgradeMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 12
 text = "Tier 1 - 500
 "
 
 [node name="Tier2" type="Button" parent="UpgradeMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 11
 text = "Tier 2 - 1500
 "
