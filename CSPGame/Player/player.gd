@@ -3,8 +3,8 @@ signal player_dead
 signal instakill_zombies
 signal shield_on
 signal shield_off
-const SPEED = 65.0
-const slideSPEED = 90.0
+const SPEED = 40.0
+const slideSPEED = 65.0
 const bullet_speed = 500.0
 const shooting_speed = 50.0
 
@@ -161,7 +161,6 @@ func update_health():
 func _on_health_reg_timeout():
 	health_regen = true
 	health_timer.stop()
-	print(health_regen)
 
 func _on_hitbox_hit():
 	health_regen = false

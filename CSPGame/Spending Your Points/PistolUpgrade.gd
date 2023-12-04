@@ -22,7 +22,7 @@ func _ready():
 	tier_2.disabled = true
 func _physics_process(delta):
 	if Input.is_action_just_pressed("interact") and label.visible == true:
-		upgrade_menu.visible = true
+		upgrade_menu.show()
 		label.visible = false
 
 func _on_body_entered(body):
@@ -30,28 +30,26 @@ func _on_body_entered(body):
 	player = body
 	upgrade_menu.position = player.global_position
 	points = player.points
+	print("Player entered having %d points" % points)
 	
 	
 func _on_body_exited(body):
 	label.visible = false
-	upgrade_menu.visible = false
+	upgrade_menu.hide()
+	print("Player left having %d points" % points)
 	#exchangeDone = false
 
 func _on_tier_1_pressed():
-	print(points)
-	if (points >= FIRST_UPGRADE):
-		exchangeDone = true
+	if (not hasBoughtFirst and points >= FIRST_UPGRADE):
+		#exchangeDone = true
 		player.on_get_points(FIRST_UPGRADE*-1)
 		player.get_upgrade(0,1)
-		print("le upgrade bought!!1")
-		#hasBoughtFirst = true
+		hasBoughtFirst = true
 		tier_1.disabled = true
 		tier_2.disabled = false
-			
 func _on_tier_2_pressed():
-	if (points >= SECOND_UPGRADE):
-		print("le upgrade bought!!2")
-		exchangeDone = true
+	if (hasBoughtFirst and not hasBoughtSecond and points >= SECOND_UPGRADE):
+		#exchangeDone = true
 		player.on_get_points(SECOND_UPGRADE*-1)
 		hasBoughtSecond = true
 		player.get_upgrade(0,2)
