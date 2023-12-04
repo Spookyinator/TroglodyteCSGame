@@ -3,10 +3,10 @@ signal player_dead
 signal instakill_zombies
 signal shield_on
 signal shield_off
-const SPEED = 40.0
-const slideSPEED = 65.0
-const bullet_speed = 500.0
-const shooting_speed = 50.0
+const SPEED = 120.0
+const slideSPEED = 195.0
+const bullet_speed = 2000.0
+const shooting_speed = 200.0
 
 enum STATE {MOVE, SLIDE, SHOOT}
 

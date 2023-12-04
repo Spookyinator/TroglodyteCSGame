@@ -310,6 +310,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WallCollisions" type="StaticBody2D" parent="."]
+scale = Vector2(4, 4)
 collision_mask = 0
 
 [node name="WallCollision" type="CollisionPolygon2D" parent="WallCollisions"]
