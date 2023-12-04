@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 40.0
-const ATKRANGE = 15.0
+const SPEED = 160.0
+const ATKRANGE = 60.0
 const KILLPOINTS = 100
 const HITPOINTS = 10
 enum state {follow, attack}

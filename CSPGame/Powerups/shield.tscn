@@ -36,11 +36,12 @@ script = ExtResource("1_dhuq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.75)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_vb8g7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_a8bq8")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
@@ -49,6 +50,7 @@ script = ExtResource("3_1hgpw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0, 1)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_vb8g7")
 
 [node name="DespawnTimer" type="Timer" parent="."]
