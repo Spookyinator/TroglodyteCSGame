@@ -47,8 +47,7 @@ func _on_tier_1_pressed():
 		#hasBoughtFirst = true
 		tier_1.disabled = true
 		tier_2.disabled = false
-			
-<<<<<<< Updated upstream
+
 func _on_tier_2_pressed():
 	if (hasBoughtFirst and not hasBoughtSecond and points >= SECOND_UPGRADE):
 		print("le upgrade bought!!2")
@@ -57,6 +56,3 @@ func _on_tier_2_pressed():
 		hasBoughtSecond = true
 		player.get_upgrade(0,2)
 		tier_2.disabled = true
-=======
-			
->>>>>>> Stashed changes

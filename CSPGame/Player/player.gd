@@ -130,7 +130,6 @@ func _physics_process(delta):
 	move_and_slide()
 	update_health()
 	update_powerup_timer()
-	print(Vector2.AXIS_X, Vector2.AXIS_Y)
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
