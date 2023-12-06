@@ -28,18 +28,19 @@ contact_monitor = true
 script = SubResource("GDScript_njtxy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.1, 0.05)
+scale = Vector2(0.4, 0.2)
 shape = SubResource("RectangleShape2D_csrva")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.827451, 0.494118, 0, 1)
 position = Vector2(-2.98023e-08, 0)
-scale = Vector2(2, 1)
+scale = Vector2(8, 4)
 mesh = SubResource("BoxMesh_uwx37")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Hurtbox" parent="." instance=ExtResource("1_irj5k")]
+scale = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 0
 
