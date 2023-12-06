@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8bfpaktqyh0m"]
+[gd_scene load_steps=9 format=3 uid="uid://b8bfpaktqyh0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
 [ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="2_22xg2"]
 [ext_resource type="Texture2D" uid="uid://v1camt1llvn7" path="res://Assets/instakill display.png" id="3_t5ijd"]
 [ext_resource type="Texture2D" uid="uid://b8o7nodjgbdyg" path="res://Assets/shield_frame_2.png" id="4_i8o72"]
+[ext_resource type="Texture2D" uid="uid://dpnddqhbq4dac" path="res://Assets/player_frame_1.png" id="5_doqt2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kctsf"]
 
@@ -112,6 +113,12 @@ wait_time = 30.0
 
 [node name="ShieldTimer" type="Timer" parent="."]
 wait_time = 30.0
+
+[node name="PlayerFrame1" type="Sprite2D" parent="."]
+position = Vector2(-2, 7.10543e-15)
+rotation = 4.71239
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_doqt2")
 
 [connection signal="shield_off" from="." to="Hitbox" method="_on_player_shield_off"]
 [connection signal="shield_on" from="." to="Hitbox" method="on_shield_activated"]
