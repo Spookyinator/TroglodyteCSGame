@@ -8,7 +8,6 @@ func _physics_process(delta):
 	animation_player.play("Idle")
 
 func on_powerup_consumed(powerup):
-	print(powerup)
 	get_node("PlayerDetection").player.activate_powerup(powerup)
 	powerup_consumed.emit(powerup)
 	queue_free()

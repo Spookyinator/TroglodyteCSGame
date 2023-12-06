@@ -46,6 +46,12 @@ var isShield = false
 @onready var shield_display = $CanvasLayer/ShieldDisplay
 const GUN_TYPES = ["Pistol","Shotgun","SMG"]
 
+var powerup_states = {"instakill": false, "shield": false}
+@onready var powerup_displays = {"instakill": instakill_display, "shield": shield_display}
+@onready var powerup_countdowns = {"instakill": instakill_countdown, "shield": shield_countdown}
+@onready var powerup_timers = {"instakill": instakill_timer, "shield": shield_timer}
+@onready var powerup_events = {"instakill": instakill_zombies, "shield": shield_on}
+
 func _ready():
 	instakill_display.visible = false
 	shield_display.visible = false
@@ -171,39 +177,26 @@ func get_upgrade(gun_type,upgrade_level):
 	gun_level = upgrade_level
 
 func activate_powerup(powerup):
-	if powerup == "instakill":
-		print("INSTAKILL ACTIVATED!")
-		isInstaKill = true
-		instakill_timer.start()
-		instakill_display.visible = true
-		instakill_countdown.visible = true
-		instakill_zombies.emit()
-	if powerup == "shield":
-		print("SHIELD ACTIVATED!")
-		isShield = true
-		shield_timer.start()
-		shield_display.visible = true
-		shield_countdown.visible = true
-		shield_on.emit()
+	powerup_states[powerup] = true
+	powerup_timers[powerup].start()
+	powerup_displays[powerup].visible = true
+	powerup_countdowns[powerup].visible = true
+	powerup_events[powerup].emit()
+	print("%s ACTIVATED!" % powerup.to_upper())
+	
+func deactivate_powerup(powerup):
+	print("%s DEACTIVATED!" % powerup.to_upper())
+	powerup_states[powerup] = false;
+	powerup_countdowns[powerup].visible = false;
+	powerup_displays[powerup].visible = false
 	
 func _on_insta_kill_timeout():
-	print("Instakill deactivated!")
-	isInstaKill = false
-	instakill_countdown.visible = false
-	instakill_display.visible = false
+	deactivate_powerup("instakill")
 func _on_shield_timer_timeout():
-	print("Shield deactivated!")
-	isShield = false
-	shield_display.visible = false
-	shield_countdown.visible = false
+	deactivate_powerup("shield")
 	shield_off.emit()
 func update_powerup_timer():
-	if (isInstaKill):
-		var instakillTimeLeft: int = instakill_timer.time_left	
-		instakill_countdown.text = "%d" % instakillTimeLeft
-	if (isShield):
-		var shieldTimeLeft: int = shield_timer.time_left
-		shield_countdown.text = "%d" % shieldTimeLeft
-
-
-
+	for powerup in powerup_states:
+		if (powerup_states[powerup]):
+			var timeLeft: int = powerup_timers[powerup].time_left
+			powerup_countdowns[powerup].text = "%d" % timeLeft
