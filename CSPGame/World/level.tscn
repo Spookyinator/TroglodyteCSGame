@@ -389,7 +389,6 @@ wait_time = 5.0
 
 [node name="PistolUpgrade" parent="." instance=ExtResource("8_jsfbd")]
 position = Vector2(216, 80)
-scale = Vector2(4, 4)
 
 [node name="Doorway" type="Area2D" parent="."]
 position = Vector2(1595, 368)

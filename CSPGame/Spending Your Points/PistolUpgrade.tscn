@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://by5v0l51q3k2t"]
+[gd_scene load_steps=5 format=3 uid="uid://by5v0l51q3k2t"]
 
 [ext_resource type="Script" path="res://Spending Your Points/PistolUpgrade.gd" id="1_5q72x"]
 [ext_resource type="Texture2D" uid="uid://bucubjsrq504f" path="res://Assets/upgrade_machine.png" id="2_s1pxe"]
@@ -6,19 +6,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxsny"]
 size = Vector2(11.3333, 6)
 
+[sub_resource type="LabelSettings" id="LabelSettings_dum8y"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [node name="PistolUpgrade" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_5q72x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 14.5)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1, 1.36)
 shape = SubResource("RectangleShape2D_yxsny")
 
 [node name="UpgradeMachine" type="Sprite2D" parent="."]
-position = Vector2(1.42109e-14, 0.6)
-scale = Vector2(0.05, 0.0679687)
+scale = Vector2(1, 1.36)
 texture = ExtResource("2_s1pxe")
 
 [node name="Label" type="Label" parent="."]
@@ -29,6 +32,7 @@ offset_right = 51.0
 offset_bottom = 41.0
 theme_override_font_sizes/font_size = 11
 text = "Press E to Interact"
+label_settings = SubResource("LabelSettings_dum8y")
 
 [node name="UpgradeMenu" type="PopupMenu" parent="."]
 size = Vector2i(126, 100)
