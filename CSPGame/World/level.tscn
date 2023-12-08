@@ -383,7 +383,7 @@ collision_mask = 2
 script = ExtResource("9_2o8xr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway"]
-position = Vector2(-259.642, 30.0424)
+position = Vector2(-516.221, 24.8177)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_fsmwp")
 
@@ -395,7 +395,7 @@ collision_mask = 2
 script = ExtResource("12_7u0ti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway2"]
-position = Vector2(-2185.9, -20.246)
+position = Vector2(-1931.62, -19.5929)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_pcf17")
 
@@ -407,7 +407,7 @@ collision_mask = 2
 script = ExtResource("13_44fwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway3"]
-position = Vector2(-1154.22, 522.477)
+position = Vector2(-1162.65, 350.06)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_2m50l")
 
