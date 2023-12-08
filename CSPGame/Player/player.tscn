@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8bfpaktqyh0m"]
+[gd_scene load_steps=11 format=3 uid="uid://b8bfpaktqyh0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_phvfc"]
 [ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="2_22xg2"]
-[ext_resource type="Texture2D" uid="uid://v1camt1llvn7" path="res://Assets/instakill display.png" id="3_t5ijd"]
+[ext_resource type="Texture2D" uid="uid://b32yc3137qo76" path="res://Assets/Instant_kill_display.png" id="3_mp25w"]
 [ext_resource type="Texture2D" uid="uid://b8o7nodjgbdyg" path="res://Assets/shield_frame_2.png" id="4_i8o72"]
 [ext_resource type="Texture2D" uid="uid://dpnddqhbq4dac" path="res://Assets/player_frame_1.png" id="5_doqt2"]
 
@@ -12,6 +12,16 @@
 radius = 10.4167
 
 [sub_resource type="BoxMesh" id="BoxMesh_swony"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5iw4"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hebgs"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -79,34 +89,33 @@ value = 3.0
 show_percentage = false
 
 [node name="InstaKillCountdown" type="Label" parent="CanvasLayer"]
-offset_left = 112.0
-offset_top = 219.0
-offset_right = 300.0
-offset_bottom = 323.0
-scale = Vector2(4, 4)
+offset_left = 72.0
+offset_top = 136.0
+offset_right = 120.0
+offset_bottom = 184.0
+label_settings = SubResource("LabelSettings_w5iw4")
 
 [node name="ShieldCountdown" type="Label" parent="CanvasLayer"]
-offset_left = 107.0
-offset_top = 42.0
-offset_right = 295.0
-offset_bottom = 146.0
-scale = Vector2(4, 4)
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 120.0
+label_settings = SubResource("LabelSettings_hebgs")
 
 [node name="InstaKillDisplay" type="TextureRect" parent="CanvasLayer"]
-offset_left = -1.0
-offset_top = 202.0
-offset_right = 83.0
-offset_bottom = 331.0
-texture = ExtResource("3_t5ijd")
-expand_mode = 5
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 256.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_mp25w")
 
 [node name="ShieldDisplay" type="TextureRect" parent="CanvasLayer"]
-offset_left = -8.0
-offset_top = 11.0
-offset_right = 96.0
-offset_bottom = 180.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_i8o72")
-expand_mode = 5
+stretch_mode = 3
 
 [node name="InstaKillTimer" type="Timer" parent="."]
 wait_time = 30.0
