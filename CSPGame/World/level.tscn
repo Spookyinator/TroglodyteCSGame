@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=24 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
@@ -231,6 +231,21 @@ texture = ExtResource("2_14ksr")
 [sub_resource type="TileSet" id="TileSet_u5jyd"]
 sources/0 = SubResource("TileSetAtlasSource_f24y4")
 
+[sub_resource type="LabelSettings" id="LabelSettings_df8w5"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5x4ix"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7cfkl"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df5sg"]
 size = Vector2(322, 196)
 
@@ -297,22 +312,22 @@ position_smoothing_speed = 10.0
 script = ExtResource("7_6xdi5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 300.0
+offset_bottom = 48.0
+label_settings = SubResource("LabelSettings_df8w5")
 
 [node name="WaveLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -386.0
-offset_top = 8.5
-offset_right = -346.0
-offset_bottom = 31.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 48.0
 grow_horizontal = 2
+label_settings = SubResource("LabelSettings_5x4ix")
+horizontal_alignment = 1
 
 [node name="WaveAnnouncement" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -320,12 +335,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -570.25
-offset_top = -310.0
-offset_right = -385.25
-offset_bottom = -215.0
+offset_left = -183.0
+offset_top = -47.5
+offset_right = 183.0
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
+label_settings = SubResource("LabelSettings_7cfkl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
