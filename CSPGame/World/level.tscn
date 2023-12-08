@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=21 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
@@ -234,8 +234,14 @@ sources/0 = SubResource("TileSetAtlasSource_f24y4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df5sg"]
 size = Vector2(322, 196)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgmrn"]
-size = Vector2(118.237, 66.2893)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsmwp"]
+size = Vector2(30.2533, 152.824)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcf17"]
+size = Vector2(49.0179, 62.3707)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m50l"]
+size = Vector2(125.226, 43.1044)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xbnhj")
@@ -372,9 +378,9 @@ collision_mask = 2
 script = ExtResource("9_2o8xr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway"]
-position = Vector2(-263.472, 6.53101)
+position = Vector2(-259.642, 30.0424)
 scale = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_dgmrn")
+shape = SubResource("RectangleShape2D_fsmwp")
 
 [node name="Doorway2" type="Area2D" parent="."]
 position = Vector2(1428, 368)
@@ -384,9 +390,9 @@ collision_mask = 2
 script = ExtResource("12_7u0ti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway2"]
-position = Vector2(-2182.83, -23.5115)
+position = Vector2(-2185.9, -20.246)
 scale = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_dgmrn")
+shape = SubResource("RectangleShape2D_pcf17")
 
 [node name="Doorway3" type="Area2D" parent="."]
 position = Vector2(1428, 368)
@@ -396,9 +402,9 @@ collision_mask = 2
 script = ExtResource("13_44fwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway3"]
-position = Vector2(-1159.58, 531.62)
+position = Vector2(-1154.22, 522.477)
 scale = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_dgmrn")
+shape = SubResource("RectangleShape2D_2m50l")
 
 [node name="TopLeft" type="Marker2D" parent="."]
 gizmo_extents = 199.5
