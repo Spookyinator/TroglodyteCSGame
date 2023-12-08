@@ -124,9 +124,9 @@ wait_time = 30.0
 wait_time = 30.0
 
 [node name="PlayerFrame1" type="Sprite2D" parent="."]
-position = Vector2(-1.19209e-07, 0)
+position = Vector2(-2, 7.10543e-15)
 rotation = 4.71239
-scale = Vector2(0.0842273, 0.0802302)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_doqt2")
 
 [connection signal="shield_off" from="." to="Hitbox" method="_on_player_shield_off"]

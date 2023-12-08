@@ -389,7 +389,6 @@ wait_time = 5.0
 
 [node name="PistolUpgrade" parent="." instance=ExtResource("8_jsfbd")]
 position = Vector2(216, 80)
-scale = Vector2(4, 4)
 
 [node name="Doorway" type="Area2D" parent="."]
 position = Vector2(1595, 368)
@@ -451,17 +450,14 @@ position = Vector2(652, 380)
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(1976, 404)
 scale = Vector2(1.1, 1.1)
-zoom = Vector2(0.85, 0.95)
 
 [node name="Camera2D3" type="Camera2D" parent="."]
 position = Vector2(-628, 388)
 scale = Vector2(1.1, 1.1)
-zoom = Vector2(1.1, 0.95)
 
 [node name="Camera2D4" type="Camera2D" parent="."]
 position = Vector2(648, 1112)
 scale = Vector2(1.1, 1.1)
-zoom = Vector2(1, 0.95)
 
 [node name="door" parent="." instance=ExtResource("14_5jwk1")]
 position = Vector2(1256, 196)

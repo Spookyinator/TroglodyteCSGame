@@ -74,7 +74,7 @@ func spawn_power_up(x, y):
 #LABELS	
 
 func _on_powerup_consumed(powerup):
-	if powerup == "instakill":
+	if powerup == "bomb":
 		var zombies = get_tree().get_nodes_in_group("Enemies")
 		for zombie in zombies:
 			zombie._on_hitbox_no_health()

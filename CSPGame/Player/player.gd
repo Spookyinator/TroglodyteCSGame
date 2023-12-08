@@ -27,9 +27,7 @@ var game_over = preload("res://Screens/gameOver.tscn")
 
 var points = 0
 var gun_level = 0
-var isInstaKill = false
 
-var isShield = false
 @onready var pivot = $Pivot
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
@@ -140,7 +138,7 @@ func _physics_process(delta):
 func shoot():
 	var bullet_instance = bullet.instantiate()
 	var hurtbox = bullet_instance.get_node("Hurtbox")
-	if (not isInstaKill):
+	if (not powerup_states["instakill"]):
 		if (not gun_level == 0):
 			hurtbox.damage = gun_level*1.5
 	else:
