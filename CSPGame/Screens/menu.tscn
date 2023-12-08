@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvltsvrwi5ime"]
+[gd_scene load_steps=5 format=3 uid="uid://cvltsvrwi5ime"]
 
 [ext_resource type="Script" path="res://Screens/menu.gd" id="1_4pubj"]
 [ext_resource type="Texture2D" uid="uid://c02ii8vma5f7e" path="res://Assets/menuscreen.png" id="2_wrevk"]
+[ext_resource type="Texture2D" uid="uid://dpnddqhbq4dac" path="res://Assets/player_frame_1.png" id="3_gwfm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cohfe"]
 size = Vector2(74.75, 92.25)
@@ -58,7 +59,7 @@ text = "Quit Game
 
 [node name="Menuscreen" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(640, 361.329)
+position = Vector2(624, 354)
 scale = Vector2(1.01426, 1.0204)
 texture = ExtResource("2_wrevk")
 
@@ -66,11 +67,16 @@ texture = ExtResource("2_wrevk")
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(648, 376)
+position = Vector2(644, 365)
 shape = SubResource("RectangleShape2D_cohfe")
 one_way_collision = true
 one_way_collision_margin = 0.0
 debug_color = Color(0.356863, 0.517647, 0.894118, 0.419608)
+
+[node name="PlayerFrame1" type="Sprite2D" parent="."]
+position = Vector2(632, 360)
+scale = Vector2(0.582143, 0.566993)
+texture = ExtResource("3_gwfm3")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
