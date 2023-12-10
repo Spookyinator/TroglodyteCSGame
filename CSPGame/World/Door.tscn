@@ -32,9 +32,8 @@ shape = SubResource("RectangleShape2D_d6no1")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -47.0
-offset_top = -22.0
+offset_top = -19.0
 offset_right = 50.0
-offset_bottom = 1.0
 scale = Vector2(0.385234, 0.689724)
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 11
@@ -49,5 +48,46 @@ rotation = -0.00183615
 scale = Vector2(0.174432, 0.562088)
 shape = SubResource("RectangleShape2D_cyvvc")
 
+[node name="UpgradeMenu" type="PopupMenu" parent="."]
+size = Vector2i(252, 200)
+visible = true
+allow_search = false
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -50.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="YesButton" type="Button" parent="UpgradeMenu/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="UpgradeMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 11
+text = "No"
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
+[connection signal="pressed" from="UpgradeMenu/MarginContainer/HBoxContainer/YesButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="UpgradeMenu/MarginContainer/HBoxContainer/NoButton" to="." method="_on_close_button_pressed"]
