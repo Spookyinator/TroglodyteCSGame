@@ -450,10 +450,12 @@ position = Vector2(652, 380)
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(1976, 404)
 scale = Vector2(1.1, 1.1)
+zoom = Vector2(0.87, 1)
 
 [node name="Camera2D3" type="Camera2D" parent="."]
 position = Vector2(-628, 388)
 scale = Vector2(1.1, 1.1)
+zoom = Vector2(1.1, 1)
 
 [node name="Camera2D4" type="Camera2D" parent="."]
 position = Vector2(648, 1112)
