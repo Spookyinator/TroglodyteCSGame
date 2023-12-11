@@ -119,10 +119,10 @@ texture = ExtResource("4_i8o72")
 stretch_mode = 3
 
 [node name="InstaKillTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 
 [node name="ShieldTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 
 [node name="PlayerFrame1" type="Sprite2D" parent="."]
 position = Vector2(-2, 7.10543e-15)
