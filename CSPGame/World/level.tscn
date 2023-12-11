@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Hitboxes & Hurtboxes/camerachange.gd" id="9_2o8xr"]
 [ext_resource type="Script" path="res://World/Doorway2.gd" id="12_7u0ti"]
 [ext_resource type="Script" path="res://World/Doorway3.gd" id="13_44fwc"]
-[ext_resource type="PackedScene" uid="uid://2cepntapguaq" path="res://Furniture/door.tscn" id="14_5jwk1"]
+[ext_resource type="PackedScene" uid="uid://lnjyp2dv2evh" path="res://World/Door.tscn" id="14_ksing"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f24y4"]
 texture = ExtResource("2_14ksr")
@@ -391,7 +391,7 @@ wait_time = 5.0
 position = Vector2(216, 80)
 
 [node name="Doorway" type="Area2D" parent="."]
-position = Vector2(1595, 368)
+position = Vector2(1632, 364)
 scale = Vector2(0.652821, 0.765584)
 collision_layer = 0
 collision_mask = 2
@@ -450,18 +450,44 @@ position = Vector2(652, 380)
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(1976, 404)
 scale = Vector2(1.1, 1.1)
+zoom = Vector2(0.87, 1)
 
 [node name="Camera2D3" type="Camera2D" parent="."]
 position = Vector2(-628, 388)
 scale = Vector2(1.1, 1.1)
+zoom = Vector2(1.1, 1)
 
 [node name="Camera2D4" type="Camera2D" parent="."]
 position = Vector2(648, 1112)
 scale = Vector2(1.1, 1.1)
 
-[node name="door" parent="." instance=ExtResource("14_5jwk1")]
-position = Vector2(1256, 196)
-scale = Vector2(4, 4)
+[node name="Door" parent="." instance=ExtResource("14_ksing")]
+position = Vector2(1253, 367)
+scale = Vector2(9, 9)
+
+[node name="Door3" parent="." instance=ExtResource("14_ksing")]
+position = Vector2(30, 351)
+rotation = 3.14159
+scale = Vector2(9, 9)
+
+[node name="Label" parent="Door3" index="3"]
+offset_left = -7.0
+offset_top = 16.0
+offset_right = 90.0
+offset_bottom = 35.0
+rotation = 3.14159
+
+[node name="Door2" parent="." instance=ExtResource("14_ksing")]
+position = Vector2(671, 758)
+rotation = -4.71239
+scale = Vector2(9, 10.9598)
+
+[node name="Label" parent="Door2" index="3"]
+offset_left = -21.0
+offset_top = 16.0
+offset_right = 76.0
+offset_bottom = 35.0
+rotation = 4.71239
 
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]
@@ -479,3 +505,5 @@ scale = Vector2(4, 4)
 [connection signal="body_exited" from="Doorway3" to="Doorway3" method="_on_body_exited"]
 
 [editable path="ZombieCounter"]
+[editable path="Door3"]
+[editable path="Door2"]

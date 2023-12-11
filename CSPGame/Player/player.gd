@@ -32,7 +32,7 @@ var gun_level = 0
 @onready var chamber = $Pivot/Chamber
 @onready var stamina_bar = $StaminaBar
 @onready var stamina_reg = $StaminReg
-
+@onready var player_skin = $PlayerFrame1
 @onready var hitbox = $Hitbox
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var health_timer = $HealthReg
@@ -131,6 +131,7 @@ func _physics_process(delta):
 		hitbox.health += .01
 		
 	pivot.look_at(get_global_mouse_position())
+	player_skin.rotation_degrees = pivot.rotation_degrees + 270
 	move_and_slide()
 	update_health()
 	update_powerup_timer()

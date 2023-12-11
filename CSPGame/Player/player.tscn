@@ -28,6 +28,7 @@ collision_layer = 2
 script = ExtResource("1_phvfc")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 scale = Vector2(10, 10)
 mesh = SubResource("SphereMesh_kctsf")
 
@@ -39,12 +40,12 @@ shape = SubResource("CircleShape2D_2t4xt")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Pivot"]
 modulate = Color(0.396078, 0.396078, 0.396078, 1)
-position = Vector2(6, 0)
-scale = Vector2(4.5, 1.5)
+position = Vector2(8, 0)
+scale = Vector2(7.18563, 1.5)
 mesh = SubResource("BoxMesh_swony")
 
 [node name="Chamber" type="Marker2D" parent="Pivot"]
-position = Vector2(9, 0)
+position = Vector2(13, 0)
 
 [node name="Hitbox" parent="." instance=ExtResource("2_22xg2")]
 collision_layer = 0
@@ -126,7 +127,7 @@ wait_time = 30.0
 [node name="PlayerFrame1" type="Sprite2D" parent="."]
 position = Vector2(-2, 7.10543e-15)
 rotation = 4.71239
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("5_doqt2")
 
 [connection signal="shield_off" from="." to="Hitbox" method="_on_player_shield_off"]
