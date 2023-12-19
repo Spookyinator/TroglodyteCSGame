@@ -1,6 +1,6 @@
 extends Area2D
 
-const max_health = 3.0
+var max_health = 3.0
 var health = max_health
 var isShieldActive = false
 signal noHealth

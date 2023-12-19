@@ -16,6 +16,7 @@ var canSpawn = true
 var waveNumber = 1
 var totalZombies = 5
 var player_room_location = 1
+var SPAWN_ROOMS = [true,false,false,false]
 signal newWave
 signal givePoints
 func _ready():
@@ -43,17 +44,27 @@ func on_new_wave():
 	#print(waveNumber)
 	display_new_wave()	
 	update_wave_label()
-	
+func spawnZombie(spawnList):
+	var spawnLocation = spawnList[randi()%spawnList.size()]
+	var zombie = test_zombie_scene.instantiate()
+	zombie.global_position = get_node(spawnLocation).global_position
+	zombie.isKilled.connect(_on_zombie_killed)
+	zombie.isHit.connect(_on_zombie_hit)
+	zombie.add_to_group("Enemies")
+	add_child(zombie)
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead and canSpawn == true):
-		var spawnArray = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
-		var zombie = test_zombie_scene.instantiate()
-		var spawnLocation = spawnArray[randi()%4]
-		zombie.global_position = get_node(spawnLocation).global_position
-		zombie.isKilled.connect(_on_zombie_killed)
-		zombie.isHit.connect(_on_zombie_hit)
-		zombie.add_to_group("Enemies")
-		add_child(zombie)
+		var spawnRoom0 = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
+		var spawnRoom1 = ["/root/Level/Spawn9","/root/Level/Spawn10"]
+		var spawnRoom2 = ["/root/Level/Spawn5","/root/Level/Spawn6"]
+		var spawnRoom3 = ["/root/Level/Spawn7","/root/Level/Spawn8"]
+		var spawns = [spawnRoom0, spawnRoom1, spawnRoom2, spawnRoom3]
+		var activeSpawns = []
+		for i in range(0,SPAWN_ROOMS.size(),1):
+			if SPAWN_ROOMS[i]:
+				activeSpawns.append(spawns[i])
+		var randomSpawn = activeSpawns[randi()%activeSpawns.size()]
+		spawnZombie(randomSpawn)
 func _on_zombie_hit(pointsScored):
 	givePoints.emit(pointsScored)
 	
@@ -110,3 +121,15 @@ func _on_doorway_entered(body):
 	camera.global_position = get_node(camera_locations[player_room_location-1]).global_position
 	print("Player is in room %d" % player_room_location)
 	print(camera.global_position)
+
+
+func _on_doorway_room_one_open():
+	SPAWN_ROOMS[1] = true
+
+
+func _on_doorway_2_room_two_open():
+	SPAWN_ROOMS[2] = true
+
+
+func _on_doorway_3_room_three_open():
+	SPAWN_ROOMS[3] = true

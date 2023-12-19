@@ -4,7 +4,7 @@ var cameraA: Camera2D
 var cameraB: Camera2D
 var Player_previous_position: Vector2 = Vector2()
 var Player
-
+signal room_one_open
 func _ready():
 	cameraA = $"../Camera2D"
 	cameraB = $"../Camera2D2"
@@ -24,6 +24,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if is_instance_valid(body) and body.name == "Player":  
+		room_one_open.emit()
 		handle_camera_switch(body)
 
 func handle_camera_switch(player):

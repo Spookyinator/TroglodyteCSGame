@@ -388,7 +388,10 @@ shape = SubResource("RectangleShape2D_df5sg")
 wait_time = 5.0
 
 [node name="PistolUpgrade" parent="." instance=ExtResource("8_jsfbd")]
-position = Vector2(216, 80)
+position = Vector2(-1041, 85)
+
+[node name="UpgradeMenu" parent="PistolUpgrade" index="3"]
+initial_position = 4
 
 [node name="Doorway" type="Area2D" parent="."]
 position = Vector2(1632, 364)
@@ -463,6 +466,7 @@ scale = Vector2(1.1, 1.1)
 [node name="Door" parent="." instance=ExtResource("14_ksing")]
 position = Vector2(1253, 367)
 scale = Vector2(9, 9)
+DOOR_COST = 2000
 
 [node name="Door3" parent="." instance=ExtResource("14_ksing")]
 position = Vector2(30, 351)
@@ -478,9 +482,13 @@ rotation = 3.14159
 horizontal_alignment = 1
 
 [node name="Door2" parent="." instance=ExtResource("14_ksing")]
-position = Vector2(671, 758)
+position = Vector2(671, 742)
 rotation = -4.71239
 scale = Vector2(9, 10.9598)
+DOOR_COST = 5000
+
+[node name="doorbody" parent="Door2" index="2"]
+scale = Vector2(1, 1)
 
 [node name="Label" parent="Door2" index="3"]
 offset_left = -19.5298
@@ -488,6 +496,24 @@ offset_top = 18.6464
 offset_right = 77.4702
 offset_bottom = 37.6464
 rotation = 4.71239
+
+[node name="Spawn5" type="Marker2D" parent="."]
+position = Vector2(-1159, 128)
+
+[node name="Spawn6" type="Marker2D" parent="."]
+position = Vector2(-1159, 647)
+
+[node name="Spawn7" type="Marker2D" parent="."]
+position = Vector2(132, 1360)
+
+[node name="Spawn8" type="Marker2D" parent="."]
+position = Vector2(1107, 1360)
+
+[node name="Spawn9" type="Marker2D" parent="."]
+position = Vector2(2607, 643)
+
+[node name="Spawn10" type="Marker2D" parent="."]
+position = Vector2(2607, 123)
 
 [connection signal="givePoints" from="." to="Player" method="on_get_points"]
 [connection signal="newWave" from="." to="ZombieCounter" method="_on_level_new_wave"]
@@ -497,13 +523,17 @@ rotation = 4.71239
 [connection signal="body_entered" from="Doorway" to="." method="_on_doorway_entered"]
 [connection signal="body_entered" from="Doorway" to="Doorway" method="_on_body_entered"]
 [connection signal="body_exited" from="Doorway" to="Doorway" method="_on_body_exited"]
+[connection signal="room_one_open" from="Doorway" to="." method="_on_doorway_room_one_open"]
 [connection signal="body_entered" from="Doorway2" to="." method="_on_doorway_entered"]
 [connection signal="body_entered" from="Doorway2" to="Doorway2" method="_on_body_entered"]
 [connection signal="body_exited" from="Doorway2" to="Doorway2" method="_on_body_exited"]
+[connection signal="room_two_open" from="Doorway2" to="." method="_on_doorway_2_room_two_open"]
 [connection signal="body_entered" from="Doorway3" to="." method="_on_doorway_entered"]
 [connection signal="body_entered" from="Doorway3" to="Doorway3" method="_on_body_entered"]
 [connection signal="body_exited" from="Doorway3" to="Doorway3" method="_on_body_exited"]
+[connection signal="room_three_open" from="Doorway3" to="." method="_on_doorway_3_room_three_open"]
 
 [editable path="ZombieCounter"]
+[editable path="PistolUpgrade"]
 [editable path="Door3"]
 [editable path="Door2"]
