@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://eu3ejaoi5nlj"]
+[gd_scene load_steps=25 format=3 uid="uid://eu3ejaoi5nlj"]
 
 [ext_resource type="PackedScene" uid="uid://b8bfpaktqyh0m" path="res://Player/player.tscn" id="1_dyldr"]
 [ext_resource type="Script" path="res://World/level.gd" id="1_xbnhj"]
 [ext_resource type="Texture2D" uid="uid://dx2tunlp8b0tm" path="res://Assets/Dungeon tileset.png" id="2_14ksr"]
 [ext_resource type="PackedScene" uid="uid://ce6iml8dpgcct" path="res://Enemies/enemyTest.tscn" id="3_2q0tg"]
 [ext_resource type="PackedScene" uid="uid://bglscehllvyx" path="res://Powerups/instakill.tscn" id="3_41jts"]
+[ext_resource type="PackedScene" uid="uid://crlrv0jpsnlm2" path="res://Enemies/bruteEnemy.tscn" id="3_jkw3u"]
 [ext_resource type="PackedScene" uid="uid://d1bhm6grbtetb" path="res://Powerups/shield.tscn" id="4_wplj7"]
 [ext_resource type="AudioStream" uid="uid://bep8crgabfj4x" path="res://MusicFiles/meathook.mp3" id="5_5ve35"]
 [ext_resource type="PackedScene" uid="uid://dev3g4a0i2m0s" path="res://WaveSystem/zombie_counter.tscn" id="6_4g4tb"]
@@ -261,6 +262,7 @@ size = Vector2(125.226, 43.1044)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xbnhj")
 test_zombie_scene = ExtResource("3_2q0tg")
+brute_zombie = ExtResource("3_jkw3u")
 power_up_instakill_scene = ExtResource("3_41jts")
 power_up_shield_scene = ExtResource("4_wplj7")
 
@@ -486,9 +488,6 @@ position = Vector2(671, 742)
 rotation = -4.71239
 scale = Vector2(9, 10.9598)
 DOOR_COST = 5000
-
-[node name="doorbody" parent="Door2" index="2"]
-scale = Vector2(1, 1)
 
 [node name="Label" parent="Door2" index="3"]
 offset_left = -19.5298

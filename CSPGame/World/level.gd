@@ -1,6 +1,7 @@
 extends Node2D
 #zombie scene, power up scene
 @export var test_zombie_scene: PackedScene
+@export var brute_zombie: PackedScene
 @export var power_up_instakill_scene: PackedScene
 @export var power_up_shield_scene: PackedScene
 @onready var _viewport = $CanvasLayer
@@ -52,6 +53,15 @@ func spawnZombie(spawnList):
 	zombie.isHit.connect(_on_zombie_hit)
 	zombie.add_to_group("Enemies")
 	add_child(zombie)
+
+func spawnBrute(spawnList):
+	var spawnLocation = spawnList[randi()%spawnList.size()]
+	var zombie = brute_zombie.instantiate()
+	zombie.global_position = get_node(spawnLocation).global_position
+	zombie.isKilled.connect(_on_zombie_killed)
+	zombie.isHit.connect(_on_zombie_hit)
+	zombie.add_to_group("Enemies")
+	add_child(zombie)
 func _on_zombie_timer_timeout():
 	if (not isPlayerDead and canSpawn == true):
 		var spawnRoom0 = ["/root/Level/Spawn1","/root/Level/Spawn2","/root/Level/Spawn3","/root/Level/Spawn4"]
@@ -64,7 +74,13 @@ func _on_zombie_timer_timeout():
 			if SPAWN_ROOMS[i]:
 				activeSpawns.append(spawns[i])
 		var randomSpawn = activeSpawns[randi()%activeSpawns.size()]
-		spawnZombie(randomSpawn)
+		if (waveNumber>=3):
+			if (randf()<0.2):
+				spawnBrute(randomSpawn)
+			else:
+				spawnZombie(randomSpawn)
+		else:
+			spawnZombie(randomSpawn)
 func _on_zombie_hit(pointsScored):
 	givePoints.emit(pointsScored)
 	

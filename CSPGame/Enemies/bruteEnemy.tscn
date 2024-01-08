@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://crlrv0jpsnlm2"]
+
+[ext_resource type="Script" path="res://Enemies/bruteEnemy.gd" id="1_xjjeo"]
+[ext_resource type="PackedScene" uid="uid://dsedh28upjm41" path="res://Hitboxes & Hurtboxes/hurtbox.tscn" id="2_uoenn"]
+[ext_resource type="PackedScene" uid="uid://clxnoyd3bwcjh" path="res://Hitboxes & Hurtboxes/hitbox.tscn" id="3_50p45"]
+[ext_resource type="Script" path="res://Hitboxes & Hurtboxes/bruteHitbox.gd" id="4_fj4p4"]
+[ext_resource type="PackedScene" uid="uid://buh0uupq04ksc" path="res://Hitboxes & Hurtboxes/player_detection.tscn" id="4_todg8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j2pa0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wy2t0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sw7tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmd5o"]
+radius = 20.0111
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yesk8"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nnt00"]
+radius = 1139.67
+
+[node name="Zombie" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_xjjeo")
+
+[node name="Skin" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0.627451, 0.858824, 1)
+scale = Vector2(60, 60)
+mesh = SubResource("SphereMesh_j2pa0")
+
+[node name="Eye1" type="MeshInstance2D" parent="Skin"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.1, -0.2)
+scale = Vector2(0.4, 0.4)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Eye2" type="MeshInstance2D" parent="Skin"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.1, 0.3)
+scale = Vector2(0.4, 0.4)
+mesh = SubResource("SphereMesh_wy2t0")
+
+[node name="Mouth" type="MeshInstance2D" parent="Skin"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0.4, 0)
+scale = Vector2(0.26, 0.76)
+mesh = SubResource("SphereMesh_sw7tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0, 0.392157, 0.309804, 1)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_wmd5o")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_uoenn")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 0
+damage = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_yesk8")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_50p45")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_fj4p4")
+max_health = 5.0
+
+[node name="Hitbox" parent="Hitbox" index="0"]
+scale = Vector2(4, 4)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -32.0
+offset_top = -40.0
+offset_right = 136.0
+offset_bottom = -13.0
+scale = Vector2(0.38, 0.38)
+value = 100.0
+show_percentage = false
+
+[node name="PlayerDetection" parent="." instance=ExtResource("4_todg8")]
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_nnt00")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_zombie_hit"]
+[connection signal="noHealth" from="Hitbox" to="." method="_on_hitbox_no_health"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
+[editable path="PlayerDetection"]
